@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tapicerek — Klient Indywidualny</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream: #F7F4EF; --warm-white: #FDFCFA; --charcoal: #1E1C1A; --stone: #8C8780; --sand: #C9BFB2; --accent: #6B4F3A; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--charcoal); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23b5a99a' opacity='0.25'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; background: rgba(247,244,239,0.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; letter-spacing: 0.05em; text-decoration: none; color: var(--charcoal); }
+    .nav-brand em { font-style: italic; color: var(--accent); }
+    .nav-back { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .hero { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.9s 0.2s forwards; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.1; letter-spacing: 0.02em; max-width: 700px; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-sub { margin-top: 24px; max-width: 480px; font-size: 0.95rem; color: var(--stone); opacity: 0; animation: fadeUp 0.9s 0.65s forwards; }
+    .hero-cta { margin-top: 44px; display: inline-block; padding: 14px 36px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: background 0.3s, color 0.3s; opacity: 0; animation: fadeUp 0.9s 0.85s forwards; }
+    .hero-cta:hover { background: var(--accent); color: var(--warm-white); }
+    .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--stone); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
+    .scroll-hint::after { content: ''; display: block; width: 1px; height: 36px; background: var(--sand); animation: scrollLine 1.8s 1.4s infinite; }
+    @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+    .divider { position: relative; z-index: 1; width: 1px; height: 60px; background: var(--sand); margin: 0 auto; }
+    section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 80px 40px; }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; line-height: 1.2; margin-bottom: 20px; }
+    .section-title em { font-style: italic; color: var(--accent); }
+    .section-body { color: var(--stone); max-width: 560px; font-size: 0.95rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 48px; border: 1px solid var(--sand); }
+    .service-card { background: var(--warm-white); padding: 36px 28px; border-right: 1px solid var(--sand); transition: background 0.3s; }
+    .service-card:last-child { border-right: none; }
+    .service-card:hover { background: #fff; }
+    .service-icon { font-size: 1.4rem; margin-bottom: 16px; }
+    .service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; margin-bottom: 10px; }
+    .service-desc { font-size: 0.82rem; color: var(--stone); line-height: 1.6; }
+    .process-steps { margin-top: 48px; display: flex; flex-direction: column; gap: 0; border-left: 1px solid var(--sand); padding-left: 32px; }
+    .step { position: relative; padding: 0 0 44px; }
+    .step:last-child { padding-bottom: 0; }
+    .step::before { content: ''; position: absolute; left: -37px; top: 4px; width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--accent); background: var(--cream); }
+    .step-num { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 6px; }
+    .step-desc { font-size: 0.85rem; color: var(--stone); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; }
+    @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } nav { padding: 20px 24px; } section { padding: 60px 24px; } }
+    .contact-info p { font-size: 0.88rem; color: var(--stone); margin-bottom: 24px; }
+    .contact-detail { display: flex; flex-direction: column; gap: 12px; }
+    .contact-detail a { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid var(--sand); padding-bottom: 4px; transition: border-color 0.2s; }
+    .contact-detail a:hover { border-color: var(--accent); }
+    .form-group { display: flex; flex-direction: column; gap: 16px; }
+    .form-group input, .form-group textarea, .form-group select { background: var(--warm-white); border: 1px solid var(--sand); padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; color: var(--charcoal); outline: none; transition: border-color 0.2s; resize: none; appearance: none; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { min-height: 100px; }
+    .form-submit { align-self: flex-start; padding: 12px 32px; background: var(--accent); color: var(--warm-white); border: none; font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+    .form-submit:hover { opacity: 0.85; }
+    footer { position: relative; z-index: 1; text-align: center; padding: 40px 24px; border-top: 1px solid var(--sand); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="index.html">Tapice<em>rek</em></a>
+    <a class="nav-back" href="index.html">← Zmień typ klienta</a>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Klient Indywidualny</p>
+    <h1 class="hero-title">Twoje meble,<br/><em>odnowione.</em></h1>
+    <p class="hero-sub">Przywracamy życie ukochanym meblom — sofom, krzesłom, zagłówkom i nie tylko — z rzemiosłem, które służy latami.</p>
+    <a class="hero-cta" href="#kontakt">Poproś o wycenę</a>
+    <span class="scroll-hint">Przewiń</span>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="uslugi">
+    <p class="section-label">Co oferujemy</p>
+    <h2 class="section-title">Usługi dla<br/><em>Twojego domu</em></h2>
+    <p class="section-body">Od pojedynczego krzesła po komplet wypoczynkowy — każdy projekt traktujemy z pełnym zaangażowaniem.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🛋️</div>
+        <div class="service-name">Sofy i kanapy</div>
+        <p class="service-desc">Pełna retapicerka, wymiana poduszek lub naprawy punktowe przywracające oryginalny komfort sofy.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🪑</div>
+        <div class="service-name">Krzesła i fotele</div>
+        <p class="service-desc">Krzesła jadalniane, fotele, akcenty wnętrzarskie — obsługujemy wszystkie konstrukcje i style z dbałością o szczegóły.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛏️</div>
+        <div class="service-name">Zagłówki i łóżka</div>
+        <p class="service-desc">Zagłówki tapicerowane na zamówienie lub renowacja istniejących, dopasowane do charakteru sypialni.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <div class="service-name">Naprawy i łatanie</div>
+        <p class="service-desc">Rozdarcia, wytarta tkanina, uszkodzone sprężyny — naprawiamy, by nie trzeba było wymieniać.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="proces">
+    <p class="section-label">Jak działamy</p>
+    <h2 class="section-title">Prosty,<br/><em>osobisty proces</em></h2>
+    <div class="process-steps">
+      <div class="step">
+        <p class="step-num">Krok 01</p>
+        <p class="step-title">Skontaktuj się z nami</p>
+        <p class="step-desc">Wyślij wiadomość ze zdjęciami i opisem mebla. Odpowiemy w ciągu 24 godzin.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">Krok 02</p>
+        <p class="step-title">Konsultacja i wycena</p>
+        <p class="step-desc">Omawiamy Twoją wizję, preferencje dotyczące tkanin i budżet. Otrzymujesz przejrzystą, szczegółową wycenę — bez niespodzianek.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">Krok 03</p>
+        <p class="step-title">Odbiór lub przywiezienie</p>
+        <p class="step-desc">Możemy odebrać mebel od Ciebie lub możesz przywieźć go do naszego warsztatu w dogodnym terminie.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">Krok 04</p>
+        <p class="step-title">Dostawa i ciesz się efektem</p>
+        <p class="step-desc">Zwracamy pięknie odnowiony mebel, na czas, z dbałością o każdy detal.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="kontakt">
+    <p class="section-label">Skontaktuj się</p>
+    <h2 class="section-title">Porozmawiajmy<br/>o <em>Twoim projekcie</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Podziel się szczegółami dotyczącymi mebla, a my przygotujemy dla Ciebie spersonalizowaną wycenę.</p>
+        <div class="contact-detail">
+          <a href="mailto:kontakt@tapicerek.pl">kontakt@tapicerek.pl</a>
+          <a href="tel:+48123456789">+48 123 456 789</a>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Imię i nazwisko"/>
+        <input type="email" placeholder="Adres e-mail"/>
+        <select>
+          <option value="" disabled selected>Rodzaj mebla</option>
+          <option>Sofa / Kanapa</option>
+          <option>Krzesło / Fotel</option>
+          <option>Zagłówek / Łóżko</option>
+          <option>Inne</option>
+        </select>
+        <textarea placeholder="Opisz swój mebel…"></textarea>
+        <button class="form-submit">Wyślij zapytanie</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Tapicerek — Usługi tapicerskie na zamówienie
+  </footer>
+
+</body>
+</html>

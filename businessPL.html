@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tapicerek — Usługi dla Firm</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream: #F0EDE8; --warm-white: #FDFCFA; --charcoal: #1E1C1A; --stone: #8C8780; --sand: #C9BFB2; --accent: #3A4F52; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--charcoal); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23b5a99a' opacity='0.22'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; background: rgba(240,237,232,0.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; letter-spacing: 0.05em; text-decoration: none; color: var(--charcoal); }
+    .nav-brand em { font-style: italic; color: var(--accent); }
+    .nav-back { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .hero { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 120px 10vw 80px; overflow: hidden; }
+    .hero-bg-text { position: absolute; right: -2vw; top: 50%; transform: translateY(-50%); font-family: 'Cormorant Garamond', serif; font-size: clamp(8rem, 18vw, 18rem); font-weight: 300; color: transparent; -webkit-text-stroke: 1px var(--sand); letter-spacing: -0.02em; pointer-events: none; user-select: none; white-space: nowrap; opacity: 0.5; }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.9s 0.2s forwards; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.05; letter-spacing: 0.02em; max-width: 680px; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-sub { margin-top: 24px; max-width: 480px; font-size: 0.95rem; color: var(--stone); opacity: 0; animation: fadeUp 0.9s 0.65s forwards; }
+    .hero-cta { margin-top: 44px; display: inline-block; padding: 14px 36px; background: var(--accent); color: var(--warm-white); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: opacity 0.3s; opacity: 0; animation: fadeUp 0.9s 0.85s forwards; }
+    .hero-cta:hover { opacity: 0.85; }
+    .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--stone); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
+    .scroll-hint::after { content: ''; display: block; width: 1px; height: 36px; background: var(--sand); animation: scrollLine 1.8s 1.4s infinite; }
+    @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+    .divider { position: relative; z-index: 1; width: 1px; height: 60px; background: var(--sand); margin: 0 auto; }
+    section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 80px 40px; }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; line-height: 1.2; margin-bottom: 20px; }
+    .section-title em { font-style: italic; color: var(--accent); }
+    .section-body { color: var(--stone); max-width: 560px; font-size: 0.95rem; }
+    .stats-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; border: 1px solid var(--sand); }
+    .stat { background: var(--warm-white); padding: 36px 28px; border-right: 1px solid var(--sand); text-align: center; }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--accent); line-height: 1; }
+    .stat-label { margin-top: 6px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
+    .services-table { width: 100%; margin-top: 48px; border-collapse: collapse; }
+    .services-table th { text-align: left; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); padding: 12px 16px; border-bottom: 1px solid var(--sand); }
+    .services-table td { padding: 20px 16px; border-bottom: 1px solid rgba(201,191,178,0.4); font-size: 0.9rem; vertical-align: top; }
+    .services-table td:first-child { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; white-space: nowrap; padding-right: 24px; }
+    .services-table tr:hover td { background: rgba(253,252,250,0.6); }
+    .tag { display: inline-block; padding: 3px 10px; border: 1px solid var(--accent); font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-top: 4px; }
+    .industries-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2px; margin-top: 48px; }
+    .industry-item { background: var(--warm-white); padding: 28px 24px; border: 1px solid var(--sand); transition: background 0.2s; }
+    .industry-item:hover { background: #fff; }
+    .industry-icon { font-size: 1.4rem; margin-bottom: 12px; }
+    .industry-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
+    .industry-sub { font-size: 0.75rem; color: var(--stone); margin-top: 4px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; }
+    @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } nav { padding: 20px 24px; } section { padding: 60px 24px; } .stats-band { grid-template-columns: 1fr; } .stat { border-right: none; border-bottom: 1px solid var(--sand); } .hero { padding: 120px 24px 80px; } }
+    .contact-info p { font-size: 0.88rem; color: var(--stone); margin-bottom: 24px; }
+    .contact-detail { display: flex; flex-direction: column; gap: 12px; }
+    .contact-detail a { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid var(--sand); padding-bottom: 4px; transition: border-color 0.2s; }
+    .contact-detail a:hover { border-color: var(--accent); }
+    .form-group { display: flex; flex-direction: column; gap: 16px; }
+    .form-group input, .form-group textarea, .form-group select { background: var(--warm-white); border: 1px solid var(--sand); padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; color: var(--charcoal); outline: none; transition: border-color 0.2s; resize: none; appearance: none; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { min-height: 100px; }
+    .form-submit { align-self: flex-start; padding: 12px 32px; background: var(--accent); color: var(--warm-white); border: none; font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+    .form-submit:hover { opacity: 0.85; }
+    footer { position: relative; z-index: 1; text-align: center; padding: 40px 24px; border-top: 1px solid var(--sand); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="index.html">Tapice<em>rek</em></a>
+    <a class="nav-back" href="index.html">← Zmień typ klienta</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg-text">Biznes</div>
+    <p class="hero-eyebrow">Usługi dla Firm i Partnerów</p>
+    <h1 class="hero-title">Wyposażanie przestrzeni<br/>na <em>dużą skalę.</em></h1>
+    <p class="hero-sub">Współpracujemy z hotelami, restauracjami, biurami i projektantami wnętrz, dostarczając wysokiej jakości tapicerkę — na czas i zgodnie z budżetem.</p>
+    <a class="hero-cta" href="#kontakt">Nawiąż współpracę</a>
+    <span class="scroll-hint">Przewiń</span>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="o-nas">
+    <p class="section-label">Dlaczego warto z nami współpracować</p>
+    <h2 class="section-title">Stworzone pod<br/><em>wymagania biznesu</em></h2>
+    <p class="section-body">Wiemy, że klienci biznesowi działają pod presją czasu, w większej skali i z wyższą stawką. Nasz proces jest właśnie do tego dostosowany.</p>
+    <div class="stats-band">
+      <div class="stat">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Zrealizowanych projektów komercyjnych</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">48h</div>
+        <div class="stat-label">Średni czas przygotowania wyceny</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Terminowość realizacji</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="uslugi">
+    <p class="section-label">Usługi</p>
+    <h2 class="section-title">Co oferujemy<br/>dla <em>klientów biznesowych</em></h2>
+    <table class="services-table">
+      <thead>
+        <tr>
+          <th>Usługa</th>
+          <th>Opis</th>
+          <th>Dla kogo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Retapicerka masowa</td>
+          <td>Renowacja dużych ilości mebli z jednolitym wykończeniem wszystkich sztuk. Dobór tkanin w cenie.</td>
+          <td><span class="tag">Hotele</span> <span class="tag">Biura</span></td>
+        </tr>
+        <tr>
+          <td>Pakiety aranżacyjne</td>
+          <td>Kompleksowe wyposażenie nowych obiektów — od doboru tkanin po dostawę i montaż.</td>
+          <td><span class="tag">Restauracje</span> <span class="tag">Bary</span></td>
+        </tr>
+        <tr>
+          <td>Obsługa serwisowa</td>
+          <td>Regularne przeglądy i umowy serwisowe, dzięki którym meble wyglądają nienagannie przez cały rok.</td>
+          <td><span class="tag">Hotelarstwo</span> <span class="tag">Handel</span></td>
+        </tr>
+        <tr>
+          <td>Ceny dla partnerów</td>
+          <td>Preferencyjne stawki dla projektantów wnętrz, architektów i sprzedawców mebli przy kwalifikujących się zamówieniach.</td>
+          <td><span class="tag">Projektanci</span> <span class="tag">Partnerzy</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="branże">
+    <p class="section-label">Branże, którym służymy</p>
+    <h2 class="section-title">Zaufany w wielu<br/><em>sektorach</em></h2>
+    <div class="industries-grid">
+      <div class="industry-item">
+        <div class="industry-icon">🏨</div>
+        <div class="industry-name">Hotelarstwo</div>
+        <div class="industry-sub">Hotele i kurorty</div>
+      </div>
+      <div class="industry-item">
+        <div class="industry-icon">🍽️</div>
+        <div class="industry-name">Gastronomia</div>
+        <div class="industry-sub">Restauracje i bary</div>
+      </div>
+      <div class="industry-item">
+        <div class="industry-icon">🏢</div>
+        <div class="industry-name">Korporacje</div>
+        <div class="industry-sub">Biura i lobby</div>
+      </div>
+      <div class="industry-item">
+        <div class="industry-icon">🎨</div>
+        <div class="industry-name">Design i architektura</div>
+        <div class="industry-sub">Studia projektowe</div>
+      </div>
+      <div class="industry-item">
+        <div class="industry-icon">🛍️</div>
+        <div class="industry-name">Handel</div>
+        <div class="industry-sub">Showroomy i sklepy</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="kontakt">
+    <p class="section-label">Skontaktuj się</p>
+    <h2 class="section-title">Porozmawiajmy<br/>o <em>Twoim projekcie</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Opisz zakres swojego projektu, a my umówimy rozmowę, by omówić, jak możemy wesprzeć Twoją firmę.</p>
+        <div class="contact-detail">
+          <a href="mailto:biznes@tapicerek.pl">biznes@tapicerek.pl</a>
+          <a href="tel:+48123456790">+48 123 456 790</a>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Imię, nazwisko i nazwa firmy"/>
+        <input type="email" placeholder="Firmowy adres e-mail"/>
+        <select>
+          <option value="" disabled selected>Branża</option>
+          <option>Hotelarstwo</option>
+          <option>Gastronomia</option>
+          <option>Korporacje / Biura</option>
+          <option>Projektowanie wnętrz / Architektura</option>
+          <option>Handel</option>
+          <option>Inne</option>
+        </select>
+        <input type="number" placeholder="Szacowana liczba sztuk"/>
+        <textarea placeholder="Opisz swój projekt…"></textarea>
+        <button class="form-submit">Wyślij zapytanie</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Tapicerek — Usługi tapicerskie na zamówienie
+  </footer>
+
+</body>
+</html>

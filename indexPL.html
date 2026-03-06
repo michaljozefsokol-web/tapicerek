@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tapicerek — Usługi Tapicerskie na Zamówienie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F4EF; --warm-white: #FDFCFA; --charcoal: #1E1C1A;
+      --stone: #8C8780; --sand: #C9BFB2; --accent: #6B4F3A;
+    }
+    html, body { height: 100%; background: var(--cream); color: var(--charcoal); font-family: 'Jost', sans-serif; font-weight: 300; overflow: hidden; }
+    .page { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.7s ease, transform 0.7s ease; }
+    .page.hidden { opacity: 0; pointer-events: none; transform: translateY(20px); }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23b5a99a' opacity='0.25'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
+    .rule { width: 40px; height: 1px; background: var(--sand); margin: 28px auto; opacity: 0; animation: fadeIn 1s 0.8s forwards; }
+    #entry { z-index: 1; text-align: center; padding: 40px 24px; }
+    .wordmark { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.8rem, 7vw, 5rem); letter-spacing: 0.04em; color: var(--charcoal); line-height: 1; opacity: 0; animation: fadeUp 1s 0.2s forwards; }
+    .wordmark em { font-style: italic; color: var(--accent); }
+    .tagline { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); margin-top: 14px; opacity: 0; animation: fadeUp 1s 0.5s forwards; }
+    .entry-prompt { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 300; color: var(--stone); letter-spacing: 0.05em; margin-bottom: 40px; opacity: 0; animation: fadeUp 1s 1s forwards; }
+    .choice-row { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 1s 1.2s forwards; }
+    .choice-btn { position: relative; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 36px 44px; border: 1px solid var(--sand); background: var(--warm-white); cursor: pointer; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; text-decoration: none; color: inherit; min-width: 200px; }
+    .choice-btn:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(107,79,58,0.1); }
+    .choice-btn .icon { font-size: 1.6rem; line-height: 1; }
+    .choice-btn .label { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; letter-spacing: 0.04em; text-align: center; }
+    .choice-btn .sub { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
+    .choice-btn::after { content: ''; position: absolute; bottom: 0; right: 0; width: 18px; height: 18px; border-bottom: 1px solid var(--accent); border-right: 1px solid var(--accent); opacity: 0; transition: opacity 0.3s; }
+    .choice-btn:hover::after { opacity: 1; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+</head>
+<body>
+  <div class="page" id="entry">
+    <h1 class="wordmark">Tapice<em>rek</em></h1>
+    <p class="tagline">Usługi tapicerskie na zamówienie</p>
+    <div class="rule"></div>
+    <p class="entry-prompt">Jak możemy Ci dziś pomóc?</p>
+    <div class="choice-row">
+      <a class="choice-btn" href="individual.html">
+        <span class="icon">🪑</span>
+        <span class="label">Klient indywidualny</span>
+        <span class="sub">Projekty prywatne</span>
+      </a>
+      <a class="choice-btn" href="business.html">
+        <span class="icon">🏢</span>
+        <span class="label">Firma</span>
+        <span class="sub">Projekty komercyjne</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
