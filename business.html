@@ -12,8 +12,7 @@
     body { background: var(--cream); color: var(--charcoal); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; }
     body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23b5a99a' opacity='0.22'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; background: rgba(240,237,232,0.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
-    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; letter-spacing: 0.05em; text-decoration: none; color: var(--charcoal); }
-    .nav-brand em { font-style: italic; color: var(--accent); }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; font-style: italic; letter-spacing: 0.05em; text-decoration: none; color: var(--accent); }
     .nav-back { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.2s; }
     .nav-back:hover { color: var(--accent); }
     .hero { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 120px 10vw 80px; overflow: hidden; }
@@ -57,9 +56,16 @@
     .contact-detail a { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid var(--sand); padding-bottom: 4px; transition: border-color 0.2s; }
     .contact-detail a:hover { border-color: var(--accent); }
     .form-group { display: flex; flex-direction: column; gap: 16px; }
-    .form-group input, .form-group textarea, .form-group select { background: var(--warm-white); border: 1px solid var(--sand); padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; color: var(--charcoal); outline: none; transition: border-color 0.2s; resize: none; appearance: none; }
+    .form-group input, .form-group textarea, .form-group select { background: var(--warm-white); border: 1px solid var(--sand); padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; color: var(--charcoal); outline: none; transition: border-color 0.2s; resize: none; appearance: none; width: 100%; }
     .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
     .form-group textarea { min-height: 100px; }
+    .file-upload-label { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 20px; border: 1px dashed var(--sand); background: var(--warm-white); cursor: pointer; transition: border-color 0.2s; text-align: center; }
+    .file-upload-label:hover { border-color: var(--accent); }
+    .file-upload-label .upload-icon { font-size: 1.4rem; }
+    .file-upload-label .upload-text { font-size: 0.8rem; color: var(--stone); letter-spacing: 0.08em; }
+    .file-upload-label .upload-hint { font-size: 0.7rem; color: var(--sand); }
+    input[type="file"] { display: none; }
+    .file-names { font-size: 0.75rem; color: var(--accent); min-height: 18px; }
     .form-submit { align-self: flex-start; padding: 12px 32px; background: var(--accent); color: var(--warm-white); border: none; font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
     .form-submit:hover { opacity: 0.85; }
     footer { position: relative; z-index: 1; text-align: center; padding: 40px 24px; border-top: 1px solid var(--sand); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); }
@@ -70,7 +76,7 @@
 <body>
 
   <nav>
-    <a class="nav-brand" href="index.html">Tapice<em>rek</em></a>
+    <a class="nav-brand" href="index.html">Tapicerek</a>
     <a class="nav-back" href="index.html">← Zmień typ klienta</a>
   </nav>
 
@@ -90,18 +96,9 @@
     <h2 class="section-title">Stworzone pod<br/><em>wymagania biznesu</em></h2>
     <p class="section-body">Wiemy, że klienci biznesowi działają pod presją czasu, w większej skali i z wyższą stawką. Nasz proces jest właśnie do tego dostosowany.</p>
     <div class="stats-band">
-      <div class="stat">
-        <div class="stat-num">500+</div>
-        <div class="stat-label">Zrealizowanych projektów komercyjnych</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">48h</div>
-        <div class="stat-label">Średni czas przygotowania wyceny</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Terminowość realizacji</div>
-      </div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Zrealizowanych projektów komercyjnych</div></div>
+      <div class="stat"><div class="stat-num">48h</div><div class="stat-label">Średni czas przygotowania wyceny</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Terminowość realizacji</div></div>
     </div>
   </section>
 
@@ -112,11 +109,7 @@
     <h2 class="section-title">Co oferujemy<br/>dla <em>klientów biznesowych</em></h2>
     <table class="services-table">
       <thead>
-        <tr>
-          <th>Usługa</th>
-          <th>Opis</th>
-          <th>Dla kogo</th>
-        </tr>
+        <tr><th>Usługa</th><th>Opis</th><th>Dla kogo</th></tr>
       </thead>
       <tbody>
         <tr>
@@ -145,35 +138,15 @@
 
   <div class="divider"></div>
 
-  <section id="branże">
+  <section id="branze">
     <p class="section-label">Branże, którym służymy</p>
     <h2 class="section-title">Zaufany w wielu<br/><em>sektorach</em></h2>
     <div class="industries-grid">
-      <div class="industry-item">
-        <div class="industry-icon">🏨</div>
-        <div class="industry-name">Hotelarstwo</div>
-        <div class="industry-sub">Hotele i kurorty</div>
-      </div>
-      <div class="industry-item">
-        <div class="industry-icon">🍽️</div>
-        <div class="industry-name">Gastronomia</div>
-        <div class="industry-sub">Restauracje i bary</div>
-      </div>
-      <div class="industry-item">
-        <div class="industry-icon">🏢</div>
-        <div class="industry-name">Korporacje</div>
-        <div class="industry-sub">Biura i lobby</div>
-      </div>
-      <div class="industry-item">
-        <div class="industry-icon">🎨</div>
-        <div class="industry-name">Design i architektura</div>
-        <div class="industry-sub">Studia projektowe</div>
-      </div>
-      <div class="industry-item">
-        <div class="industry-icon">🛍️</div>
-        <div class="industry-name">Handel</div>
-        <div class="industry-sub">Showroomy i sklepy</div>
-      </div>
+      <div class="industry-item"><div class="industry-icon">🏨</div><div class="industry-name">Hotelarstwo</div><div class="industry-sub">Hotele i kurorty</div></div>
+      <div class="industry-item"><div class="industry-icon">🍽️</div><div class="industry-name">Gastronomia</div><div class="industry-sub">Restauracje i bary</div></div>
+      <div class="industry-item"><div class="industry-icon">🏢</div><div class="industry-name">Korporacje</div><div class="industry-sub">Biura i lobby</div></div>
+      <div class="industry-item"><div class="industry-icon">🎨</div><div class="industry-name">Design i architektura</div><div class="industry-sub">Studia projektowe</div></div>
+      <div class="industry-item"><div class="industry-icon">🛍️</div><div class="industry-name">Handel</div><div class="industry-sub">Showroomy i sklepy</div></div>
     </div>
   </section>
 
@@ -184,10 +157,10 @@
     <h2 class="section-title">Porozmawiajmy<br/>o <em>Twoim projekcie</em></h2>
     <div class="contact-grid">
       <div class="contact-info">
-        <p>Opisz zakres swojego projektu, a my umówimy rozmowę, by omówić, jak możemy wesprzeć Twoją firmę.</p>
+        <p>Opisz zakres swojego projektu, a my umówimy rozmowę, by omówić, jak możemy wesprzeć Twoją firmę. Możesz dołączyć zdjęcia lub dokumenty projektowe.</p>
         <div class="contact-detail">
-          <a href="mailto:biznes@tapicerek.pl">biznes@tapicerek.pl</a>
-          <a href="tel:+48123456790">+48 123 456 790</a>
+          <a href="/cdn-cgi/l/email-protection#f78396879e949285929cd99392959e9496b7909a969e9bd994989a"><span class="__cf_email__" data-cfemail="82f6e3f2ebe1e7f0e7e9ace6e7e0ebe1e3c2e5efe3ebeeace1edef">[email&#160;protected]</span></a>
+          <a href="tel:+48606109776">606 109 776</a>
         </div>
       </div>
       <div class="form-group">
@@ -204,14 +177,66 @@
         </select>
         <input type="number" placeholder="Szacowana liczba sztuk"/>
         <textarea placeholder="Opisz swój projekt…"></textarea>
+        <label class="file-upload-label" for="fileUploadBiz">
+          <span class="upload-icon">📎</span>
+          <span class="upload-text">Dodaj zdjęcia lub pliki projektowe</span>
+          <span class="upload-hint">JPG, PNG, PDF — maks. kilka plików</span>
+        </label>
+        <input type="file" id="fileUploadBiz" multiple accept="image/*,.pdf" onchange="showFileNames(this)"/>
+        <div class="file-names" id="fileNamesBiz"></div>
         <button class="form-submit">Wyślij zapytanie</button>
       </div>
     </div>
   </section>
 
-  <footer>
-    © 2025 Tapicerek — Usługi tapicerskie na zamówienie
+  <!-- LOKALIZACJA -->
+  <div class="divider"></div>
+  <section id="lokalizacja" style="position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:80px 40px;">
+    <p class="section-label">Znajdź nas</p>
+    <h2 class="section-title">Nasza<br/><em>lokalizacja</em></h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-bottom:32px;border:1px solid var(--sand);">
+      <div style="background:var(--warm-white);padding:24px 20px;border-right:1px solid var(--sand);">
+        <div style="font-size:1.2rem;margin-bottom:8px;">📍</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Adres</div>
+        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;">Gumniska 21B<br/>39-200 Dębica</div>
+      </div>
+      <div style="background:var(--warm-white);padding:24px 20px;border-right:1px solid var(--sand);">
+        <div style="font-size:1.2rem;margin-bottom:8px;">🕐</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Godziny otwarcia</div>
+        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;">Pon – Pt: 8:00 – 16:00<br/>Sobota – Niedziela: zamknięte</div>
+      </div>
+      <div style="background:var(--warm-white);padding:24px 20px;border-right:1px solid var(--sand);">
+        <div style="font-size:1.2rem;margin-bottom:8px;">⭐</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Opinie Google</div>
+        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;margin-bottom:10px;">Zobacz aktualne oceny<br/>i opinie naszych klientów</div>
+        <a href="https://www.google.com/maps/search/Tapicerek+Jolanta+Kwolek-Sokół+Dębica" target="_blank" style="display:inline-block;padding:6px 14px;border:1px solid var(--accent);color:var(--accent);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--accent)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Sprawdź w Google</a>
+      </div>
+      <div style="background:var(--warm-white);padding:24px 20px;">
+        <div style="font-size:1.2rem;margin-bottom:8px;">👍</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Facebook</div>
+        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;margin-bottom:10px;">Śledź nas na Facebooku,<br/>oglądaj realizacje i aktualności</div>
+        <a href="https://www.facebook.com" target="_blank" style="display:inline-block;padding:6px 14px;border:1px solid var(--accent);color:var(--accent);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--accent)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Odwiedź profil</a>
+      </div>
+    </div>
+
+    <div style="width:100%;height:420px;border:1px solid var(--sand);overflow:hidden;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2550.2!2d21.4130!3d50.0520!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473cf0b5c5c5c5c5%3A0x1!2sGumniska+21B%2C+39-200+D%C4%99bica!5e0!3m2!1spl!2spl!4v1"
+        width="100%" height="420" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Tapicerek Dębica — Gumniska 21B">
+      </iframe>
+    </div>
+    <div style="margin-top:12px;text-align:right;">
+      <a href="https://www.google.com/maps/search/Tapicerek+Jolanta+Kwolek-Sokół+Gumniska+21B+Dębica" target="_blank" style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--stone);text-decoration:none;border-bottom:1px solid var(--sand);padding-bottom:2px;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--stone)'">Otwórz w Google Maps →</a>
+    </div>
+  </section>
+
+  <footer style="position:relative;z-index:1;text-align:center;padding:40px 24px;border-top:1px solid var(--sand);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--stone);">
+    © 2025 Tapicerek — Gumniska 21B, 39-200 Dębica &nbsp;·&nbsp; Pon–Pt 8:00–16:00
   </footer>
 
-</body>
-</html>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function showFileNames(input) {
+    

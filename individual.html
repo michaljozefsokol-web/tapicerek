@@ -11,11 +11,12 @@
     html { scroll-behavior: smooth; }
     body { background: var(--cream); color: var(--charcoal); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; }
     body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23b5a99a' opacity='0.25'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
+
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; background: rgba(247,244,239,0.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
-    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; letter-spacing: 0.05em; text-decoration: none; color: var(--charcoal); }
-    .nav-brand em { font-style: italic; color: var(--accent); }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; font-style: italic; letter-spacing: 0.05em; text-decoration: none; color: var(--accent); }
     .nav-back { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.2s; }
     .nav-back:hover { color: var(--accent); }
+
     .hero { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; }
     .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.9s 0.2s forwards; }
     .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.1; letter-spacing: 0.02em; max-width: 700px; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
@@ -26,39 +27,76 @@
     .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--stone); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
     .scroll-hint::after { content: ''; display: block; width: 1px; height: 36px; background: var(--sand); animation: scrollLine 1.8s 1.4s infinite; }
     @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
     .divider { position: relative; z-index: 1; width: 1px; height: 60px; background: var(--sand); margin: 0 auto; }
-    section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 80px 40px; }
+
+    section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
     .section-label { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
     .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; line-height: 1.2; margin-bottom: 20px; }
     .section-title em { font-style: italic; color: var(--accent); }
-    .section-body { color: var(--stone); max-width: 560px; font-size: 0.95rem; }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 48px; border: 1px solid var(--sand); }
-    .service-card { background: var(--warm-white); padding: 36px 28px; border-right: 1px solid var(--sand); transition: background 0.3s; }
+    .section-body { color: var(--stone); max-width: 600px; font-size: 0.95rem; }
+
+    /* Services grid */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; margin-top: 48px; border: 1px solid var(--sand); }
+    .service-card { background: var(--warm-white); padding: 32px 24px; border-right: 1px solid var(--sand); transition: background 0.3s; }
     .service-card:last-child { border-right: none; }
     .service-card:hover { background: #fff; }
     .service-icon { font-size: 1.4rem; margin-bottom: 16px; }
-    .service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; margin-bottom: 10px; }
+    .service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; margin-bottom: 10px; }
     .service-desc { font-size: 0.82rem; color: var(--stone); line-height: 1.6; }
-    .process-steps { margin-top: 48px; display: flex; flex-direction: column; gap: 0; border-left: 1px solid var(--sand); padding-left: 32px; }
+
+    /* Specialist box */
+    .specialist-box { margin-top: 32px; border: 1px solid var(--sand); background: var(--warm-white); padding: 28px 32px; }
+    .specialist-box .spec-label { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .specialist-box .spec-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 14px; }
+    .specialist-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .specialist-tags span { display: inline-block; padding: 5px 14px; border: 1px solid var(--sand); font-size: 0.78rem; color: var(--stone); letter-spacing: 0.08em; }
+
+    /* Process */
+    .process-steps { margin-top: 48px; display: flex; flex-direction: column; border-left: 1px solid var(--sand); padding-left: 32px; }
     .step { position: relative; padding: 0 0 44px; }
     .step:last-child { padding-bottom: 0; }
     .step::before { content: ''; position: absolute; left: -37px; top: 4px; width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--accent); background: var(--cream); }
     .step-num { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
     .step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 6px; }
     .step-desc { font-size: 0.85rem; color: var(--stone); }
+
+    /* Materials */
+    .materials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 48px; border: 1px solid var(--sand); }
+    .material-card { background: var(--warm-white); padding: 28px 24px; border-right: 1px solid var(--sand); }
+    .material-card:last-child { border-right: none; }
+    .material-icon { font-size: 1.3rem; margin-bottom: 12px; }
+    .material-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-bottom: 8px; }
+    .material-desc { font-size: 0.8rem; color: var(--stone); line-height: 1.6; }
+
+    /* Contact */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; }
-    @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } nav { padding: 20px 24px; } section { padding: 60px 24px; } }
+    @media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } nav { padding: 20px 24px; } section { padding: 60px 24px; } .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .services-grid { grid-template-columns: 1fr; } }
     .contact-info p { font-size: 0.88rem; color: var(--stone); margin-bottom: 24px; }
     .contact-detail { display: flex; flex-direction: column; gap: 12px; }
     .contact-detail a { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid var(--sand); padding-bottom: 4px; transition: border-color 0.2s; }
     .contact-detail a:hover { border-color: var(--accent); }
+
     .form-group { display: flex; flex-direction: column; gap: 16px; }
-    .form-group input, .form-group textarea, .form-group select { background: var(--warm-white); border: 1px solid var(--sand); padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; color: var(--charcoal); outline: none; transition: border-color 0.2s; resize: none; appearance: none; }
+    .form-group input, .form-group textarea, .form-group select { background: var(--warm-white); border: 1px solid var(--sand); padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; color: var(--charcoal); outline: none; transition: border-color 0.2s; resize: none; appearance: none; width: 100%; }
     .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
     .form-group textarea { min-height: 100px; }
+
+    /* File upload */
+    .file-upload-label { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 20px; border: 1px dashed var(--sand); background: var(--warm-white); cursor: pointer; transition: border-color 0.2s; text-align: center; }
+    .file-upload-label:hover { border-color: var(--accent); }
+    .file-upload-label .upload-icon { font-size: 1.4rem; }
+    .file-upload-label .upload-text { font-size: 0.8rem; color: var(--stone); letter-spacing: 0.08em; }
+    .file-upload-label .upload-hint { font-size: 0.7rem; color: var(--sand); }
+    input[type="file"] { display: none; }
+    .file-names { font-size: 0.75rem; color: var(--accent); min-height: 18px; }
+
     .form-submit { align-self: flex-start; padding: 12px 32px; background: var(--accent); color: var(--warm-white); border: none; font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
     .form-submit:hover { opacity: 0.85; }
+
     footer { position: relative; z-index: 1; text-align: center; padding: 40px 24px; border-top: 1px solid var(--sand); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); }
+
     @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   </style>
@@ -66,21 +104,23 @@
 <body>
 
   <nav>
-    <a class="nav-brand" href="index.html">Tapice<em>rek</em></a>
+    <a class="nav-brand" href="index.html">Tapicerek</a>
     <a class="nav-back" href="index.html">← Zmień typ klienta</a>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
     <p class="hero-eyebrow">Klient Indywidualny</p>
     <h1 class="hero-title">Twoje meble,<br/><em>odnowione.</em></h1>
     <p class="hero-sub">Przywracamy życie ukochanym meblom — sofom, krzesłom, zagłówkom i nie tylko — z rzemiosłem, które służy latami.</p>
-    <a class="hero-cta" href="#kontakt">Poproś o wycenę</a>
+    <a class="hero-cta" href="#kontakt">Zamawiam wycenę!</a>
     <span class="scroll-hint">Przewiń</span>
   </section>
 
   <div class="divider"></div>
 
-  <section id="uslugi">
+  <!-- USŁUGI DLA DOMU -->
+  <section id="uslugi-dom">
     <p class="section-label">Co oferujemy</p>
     <h2 class="section-title">Usługi dla<br/><em>Twojego domu</em></h2>
     <p class="section-body">Od pojedynczego krzesła po komplet wypoczynkowy — każdy projekt traktujemy z pełnym zaangażowaniem.</p>
@@ -88,12 +128,12 @@
       <div class="service-card">
         <div class="service-icon">🛋️</div>
         <div class="service-name">Sofy i kanapy</div>
-        <p class="service-desc">Pełna retapicerka, wymiana poduszek lub naprawy punktowe przywracające oryginalny komfort sofy.</p>
+        <p class="service-desc">Pełna wymiana tapicerki, naprawy punktowe, poprawa gąbek. Przywracamy oryginalny komfort sofy.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">🪑</div>
-        <div class="service-name">Krzesła i fotele</div>
-        <p class="service-desc">Krzesła jadalniane, fotele, akcenty wnętrzarskie — obsługujemy wszystkie konstrukcje i style z dbałością o szczegóły.</p>
+        <div class="service-name">Fotele i krzesła</div>
+        <p class="service-desc">Fotele wypoczynkowe, krzesła jadalniane, akcenty wnętrzarskie — obsługujemy wszystkie konstrukcje i style.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">🛏️</div>
@@ -101,15 +141,120 @@
         <p class="service-desc">Zagłówki tapicerowane na zamówienie lub renowacja istniejących, dopasowane do charakteru sypialni.</p>
       </div>
       <div class="service-card">
+        <div class="service-icon">🖼️</div>
+        <div class="service-name">Panele ścienne</div>
+        <p class="service-desc">Tapicerowane panele dekoracyjne i akustyczne — eleganckie wykończenie każdego wnętrza.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌿</div>
+        <div class="service-name">Meble ogrodowe</div>
+        <p class="service-desc">Huśtawki, fotele, krzesła i leżaki ogrodowe — trwałe tkaniny zewnętrzne odporne na warunki atmosferyczne.</p>
+      </div>
+      <div class="service-card">
         <div class="service-icon">🔧</div>
-        <div class="service-name">Naprawy i łatanie</div>
+        <div class="service-name">Naprawy i renowacje</div>
         <p class="service-desc">Rozdarcia, wytarta tkanina, uszkodzone sprężyny — naprawiamy, by nie trzeba było wymieniać.</p>
+      </div>
+    </div>
+
+    <!-- Specjalistyczne -->
+    <div class="specialist-box">
+      <div class="spec-label">Specjalistyczne</div>
+      <div class="spec-title">Realizujemy również</div>
+      <div class="specialist-tags">
+        <span>Panele tapicerowane ścienne</span>
+        <span>Akcesoria dla zwierząt</span>
+        <span>Materace łóżkowe własnej produkcji</span>
+        <span>Loże barowe</span>
+        <span>Wkłady skórzane do mebli typu „holender"</span>
+        <span>Kozetki do gabinetów medycznych</span>
+        <span>Elementy tapicerowane do siłowni</span>
+        <span>Fotele do salonów fryzjerskich</span>
+        <span>I wiele innych…</span>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
+  <!-- USŁUGI DLA POJAZDU -->
+  <section id="uslugi-pojazd">
+    <p class="section-label">Motoryzacja i transport</p>
+    <h2 class="section-title">Usługi dla<br/><em>Twojego pojazdu</em></h2>
+    <p class="section-body">Tapicerka samochodowa, rolnicza, przemysłowa i wiele więcej — przywracamy komfort i estetykę każdemu pojazdowi.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🚗</div>
+        <div class="service-name">Fotele samochodowe</div>
+        <p class="service-desc">Retapicerka, renowacja i naprawa foteli samochodowych — skóra naturalna, eko-skóra, welur i inne tkaniny.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚜</div>
+        <div class="service-name">Pojazdy robocze</div>
+        <p class="service-desc">Siedzenia i oparcia do wózków widłowych, koparek, ciągników, traktorów, walców i innych maszyn roboczych.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏍️</div>
+        <div class="service-name">Motocykle i quady</div>
+        <p class="service-desc">Siedzenia do motocykli, quadów, skuterów i innych pojazdów jednośladowych — trwałe materiały odporne na warunki.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚌</div>
+        <div class="service-name">Transport i komunikacja</div>
+        <p class="service-desc">Fotele maszynisty lokomotywy, siedzenia samolotowe, siedzenia do pojazdów typu melex i inne.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛻</div>
+        <div class="service-name">Kampery i auta dostawcze</div>
+        <p class="service-desc">Wkłady tapicerowane do kamperów, materace samochodowe, podsufitki i inne elementy wykończenia wnętrza pojazdu.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <div class="service-name">Elementy techniczne</div>
+        <p class="service-desc">Miechy turbo sprężarek, koszulki na przewody zasilające i inne specjalistyczne elementy tapicerowane.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MATERIAŁY -->
+  <section id="materialy">
+    <p class="section-label">Materiały</p>
+    <h2 class="section-title">Szeroki wybór<br/><em>tkanin i materiałów</em></h2>
+    <p class="section-body">Oferujemy bardzo szeroki wybór materiałów — zarówno pod względem kolorów, rodzajów, jak i wszelkich dodatków z nimi związanych.</p>
+    <div class="materials-grid">
+      <div class="material-card">
+        <div class="material-icon">🐄</div>
+        <div class="material-name">Skóry i eko-skóry</div>
+        <p class="material-desc">Skóry naturalne, eko-skóry (tzw. skaj) o wysokiej wytrzymałości — w wielu kolorach i fakturach.</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">🧶</div>
+        <div class="material-name">Welury i plusze</div>
+        <p class="material-desc">Miękkie, eleganckie tkaniny tapicerskie o wysokiej jakości — welury, plusze i inne tekstylia premium.</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">🛡️</div>
+        <div class="material-name">Tkaniny laminowane</div>
+        <p class="material-desc">Materiały laminowane i tkaniny meblowe odporne na płowienie i blaknięcie — idealne do intensywnego użytkowania.</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">🌧️</div>
+        <div class="material-name">Tkaniny zewnętrzne</div>
+        <p class="material-desc">Wodoodporne tkaniny ogrodowe odporne na blaknięcie — na parasole, poduszki ogrodowe i meble zewnętrzne.</p>
+      </div>
+      <div class="material-card">
+        <div class="material-icon">💤</div>
+        <div class="material-name">Pianki i podsufitki</div>
+        <p class="material-desc">Pianki tapicerskie różnej twardości oraz materiały na podsufitki samochodowe i inne elementy wykończeniowe.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROCES -->
   <section id="proces">
     <p class="section-label">Jak działamy</p>
     <h2 class="section-title">Prosty,<br/><em>osobisty proces</em></h2>
@@ -117,58 +262,118 @@
       <div class="step">
         <p class="step-num">Krok 01</p>
         <p class="step-title">Skontaktuj się z nami</p>
-        <p class="step-desc">Wyślij wiadomość ze zdjęciami i opisem mebla. Odpowiemy w ciągu 24 godzin.</p>
+        <p class="step-desc">Wyślij wiadomość ze zdjęciami i opisem mebla lub pojazdu. Odpowiemy w ciągu 24 godzin roboczych.</p>
       </div>
       <div class="step">
         <p class="step-num">Krok 02</p>
-        <p class="step-title">Konsultacja i wycena</p>
-        <p class="step-desc">Omawiamy Twoją wizję, preferencje dotyczące tkanin i budżet. Otrzymujesz przejrzystą, szczegółową wycenę — bez niespodzianek.</p>
+        <p class="step-title">Konsultacja, wycena i termin</p>
+        <p class="step-desc">Omawiamy Twoją wizję, preferencje dotyczące tkanin i budżet. Ustalamy termin realizacji. Otrzymujesz przejrzystą, szczegółową wycenę — bez niespodzianek.</p>
       </div>
       <div class="step">
         <p class="step-num">Krok 03</p>
-        <p class="step-title">Odbiór lub przywiezienie</p>
-        <p class="step-desc">Możemy odebrać mebel od Ciebie lub możesz przywieźć go do naszego warsztatu w dogodnym terminie.</p>
+        <p class="step-title">Realizacja w warsztacie</p>
+        <p class="step-desc">Twój mebel lub element trafia do naszego warsztatu, gdzie nasi rzemieślnicy wykonują zlecenie z najwyższą starannością.</p>
       </div>
       <div class="step">
         <p class="step-num">Krok 04</p>
-        <p class="step-title">Dostawa i ciesz się efektem</p>
-        <p class="step-desc">Zwracamy pięknie odnowiony mebel, na czas, z dbałością o każdy detal.</p>
+        <p class="step-title">Odbiór i ciesz się efektem</p>
+        <p class="step-desc">Odbierasz pięknie odnowiony mebel lub element — na czas, z dbałością o każdy detal.</p>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
+  <!-- KONTAKT -->
   <section id="kontakt">
     <p class="section-label">Skontaktuj się</p>
     <h2 class="section-title">Porozmawiajmy<br/>o <em>Twoim projekcie</em></h2>
     <div class="contact-grid">
       <div class="contact-info">
-        <p>Podziel się szczegółami dotyczącymi mebla, a my przygotujemy dla Ciebie spersonalizowaną wycenę.</p>
+        <p>Podziel się szczegółami dotyczącymi mebla lub pojazdu, a my przygotujemy dla Ciebie spersonalizowaną wycenę. Możesz dołączyć zdjęcia, które pomogą nam dokładniej oszacować zakres prac.</p>
         <div class="contact-detail">
-          <a href="mailto:kontakt@tapicerek.pl">kontakt@tapicerek.pl</a>
-          <a href="tel:+48123456789">+48 123 456 789</a>
+          <a href="/cdn-cgi/l/email-protection#f28693829b9197809799dc9697909b9193b2959f939b9edc919d9f"><span class="__cf_email__" data-cfemail="1c687d6c757f796e79773278797e757f7d5c7b717d7570327f7371">[email&#160;protected]</span></a>
+          <a href="tel:+48606109776">606 109 776</a>
         </div>
       </div>
       <div class="form-group">
         <input type="text" placeholder="Imię i nazwisko"/>
         <input type="email" placeholder="Adres e-mail"/>
         <select>
-          <option value="" disabled selected>Rodzaj mebla</option>
+          <option value="" disabled selected>Rodzaj zlecenia</option>
           <option>Sofa / Kanapa</option>
-          <option>Krzesło / Fotel</option>
+          <option>Fotel / Krzesło</option>
           <option>Zagłówek / Łóżko</option>
+          <option>Panel ścienny</option>
+          <option>Tapicerka samochodowa</option>
+          <option>Pojazd roboczy / Maszyna</option>
+          <option>Motocykl / Quad</option>
           <option>Inne</option>
         </select>
-        <textarea placeholder="Opisz swój mebel…"></textarea>
+        <textarea placeholder="Opisz swój mebel lub pojazd…"></textarea>
+
+        <!-- Załączniki -->
+        <label class="file-upload-label" for="fileUpload">
+          <span class="upload-icon">📎</span>
+          <span class="upload-text">Dodaj zdjęcia lub pliki</span>
+          <span class="upload-hint">JPG, PNG, PDF — maks. kilka plików</span>
+        </label>
+        <input type="file" id="fileUpload" multiple accept="image/*,.pdf" onchange="showFileNames(this)"/>
+        <div class="file-names" id="fileNames"></div>
+
         <button class="form-submit">Wyślij zapytanie</button>
       </div>
     </div>
   </section>
 
-  <footer>
-    © 2025 Tapicerek — Usługi tapicerskie na zamówienie
+  <!-- LOKALIZACJA -->
+  <div class="divider"></div>
+  <section id="lokalizacja" style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 40px;">
+    <p class="section-label">Znajdź nas</p>
+    <h2 class="section-title">Nasza<br/><em>lokalizacja</em></h2>
+
+    <!-- Info bar -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-bottom:32px;border:1px solid var(--sand);">
+      <div style="background:var(--warm-white);padding:24px 20px;border-right:1px solid var(--sand);">
+        <div style="font-size:1.2rem;margin-bottom:8px;">📍</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Adres</div>
+        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;">Gumniska 21B<br/>39-200 Dębica</div>
+      </div>
+      <div style="background:var(--warm-white);padding:24px 20px;border-right:1px solid var(--sand);">
+        <div style="font-size:1.2rem;margin-bottom:8px;">🕐</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Godziny otwarcia</div>
+        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;">Pon – Pt: 8:00 – 16:00<br/>Sobota – Niedziela: zamknięte</div>
+      </div>
+      <div style="background:var(--warm-white);padding:24px 20px;border-right:1px solid var(--sand);">
+        <div style="font-size:1.2rem;margin-bottom:8px;">⭐</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Opinie Google</div>
+        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;margin-bottom:10px;">Zobacz aktualne oceny<br/>i opinie naszych klientów</div>
+        <a href="https://www.google.com/maps/search/Tapicerek+Jolanta+Kwolek-Sokół+Dębica" target="_blank" style="display:inline-block;padding:6px 14px;border:1px solid var(--accent);color:var(--accent);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--accent)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Sprawdź w Google</a>
+      </div>
+      <div style="background:var(--warm-white);padding:24px 20px;">
+        <div style="font-size:1.2rem;margin-bottom:8px;">👍</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Facebook</div>
+        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;margin-bottom:10px;">Śledź nas na Facebooku,<br/>oglądaj realizacje i aktualności</div>
+        <a href="https://www.facebook.com" target="_blank" style="display:inline-block;padding:6px 14px;border:1px solid var(--accent);color:var(--accent);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--accent)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Odwiedź profil</a>
+      </div>
+    </div>
+
+    <!-- Mapa Google embed -->
+    <div style="width:100%;height:420px;border:1px solid var(--sand);overflow:hidden;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2550.2!2d21.4130!3d50.0520!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473cf0b5c5c5c5c5%3A0x1!2sGumniska+21B%2C+39-200+D%C4%99bica!5e0!3m2!1spl!2spl!4v1"
+        width="100%" height="420" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Tapicerek Dębica — Gumniska 21B">
+      </iframe>
+    </div>
+    <div style="margin-top:12px;text-align:right;">
+      <a href="https://www.google.com/maps/search/Tapicerek+Jolanta+Kwolek-Sokół+Gumniska+21B+Dębica" target="_blank" style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--stone);text-decoration:none;border-bottom:1px solid var(--sand);padding-bottom:2px;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--stone)'">Otwórz w Google Maps →</a>
+    </div>
+  </section>
+
+  <footer style="position:relative;z-index:1;text-align:center;padding:40px 24px;border-top:1px solid var(--sand);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--stone);">
+    © 2025 Tapicerek — Gumniska 21B, 39-200 Dębica &nbsp;·&nbsp; Pon–Pt 8:00–16:00
   </footer>
 
-</body>
-</html>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-sta
