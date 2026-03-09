@@ -26,7 +26,7 @@
     .hero-sub { margin-top: 28px; max-width: 520px; font-size: 1rem; color: var(--stone); line-height: 1.75; opacity: 0; animation: fadeUp 0.9s 0.6s forwards; }
     .hero-cta { margin-top: 48px; display: inline-block; padding: 14px 40px; background: var(--accent); color: var(--warm-white); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: opacity 0.3s; opacity: 0; animation: fadeUp 0.9s 0.8s forwards; }
     .hero-cta:hover { opacity: 0.85; }
-    .scroll-hint { position: absolute; bottom: 36px; left: 10vw; display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--stone); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
+    .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--stone); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
     .scroll-hint::after { content: ''; display: block; width: 1px; height: 36px; background: var(--sand); animation: scrollLine 1.8s 1.4s infinite; }
 
     .divider { position: relative; z-index: 1; width: 1px; height: 60px; background: var(--sand); margin: 0 auto; }
@@ -196,12 +196,12 @@
         <div class="kpi-label">Aktywnych partnerów biznesowych w Polsce</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-icon">🪑</div>
+        <div class="kpi-icon">🏗️</div>
         <div class="kpi-value">X szt.</div>
         <div class="kpi-label">Ustandaryzowanych siedzeń, zagłówków i oparć rocznie</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-icon">📦</div>
+        <div class="kpi-icon">📊</div>
         <div class="kpi-value">X proj.</div>
         <div class="kpi-label">Realizowanych projektów biznesowych rocznie</div>
       </div>
@@ -270,6 +270,13 @@
     <div class="case-grid">
       <div class="case-card">
         <div class="case-watermark">Melex</div>
+        <div style="width:100%;height:200px;background:linear-gradient(135deg,#2D3F42,#3A4F52);display:flex;align-items:center;justify-content:center;margin-bottom:24px;position:relative;overflow:hidden;">
+          <img src="melex.jpg" alt="Melex — pojazdy elektryczne" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'"/>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(255,255,255,0.15);letter-spacing:0.1em;">Melex</span>
+          </div>
+        </div>
+
         <div class="case-label">Współpraca od 1999 roku</div>
         <div class="case-name">Melex —<br/><em>producent pojazdów elektrycznych</em></div>
         <p class="case-body">Od ponad 26 lat jesteśmy certyfikowanym dostawcą siedzisk tapicerowanych dla firmy Melex — wiodącego polskiego producenta pojazdów elektrycznych eksportowanych na cały świat. Produkujemy siedzenia, zagłówki i oparcia w powtarzalnych seriach, spełniając rygorystyczne standardy jakościowe i terminowe wymagania linii produkcyjnej.</p>
@@ -290,6 +297,13 @@
       </div>
       <div class="case-card">
         <div class="case-watermark">Tabor</div>
+        <div style="width:100%;height:200px;background:linear-gradient(135deg,#2D3F42,#3A4F52);display:flex;align-items:center;justify-content:center;margin-bottom:24px;position:relative;overflow:hidden;">
+          <img src="tabor.jpg" alt="Tabor Dębica" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'"/>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(255,255,255,0.15);letter-spacing:0.1em;">Tabor</span>
+          </div>
+        </div>
+
         <div class="case-label">Współpraca długoterminowa</div>
         <div class="case-name">Tabor Dębica —<br/><em>producent taboru kolejowego</em></div>
         <p class="case-body">Współpracujemy z Tabor Dębica przy tapicerowaniu elementów taboru kolejowego i komunikacji zbiorowej. Realizujemy zlecenia na siedziska pasażerskie, panele i inne elementy wykończenia wnętrz wagonów i pojazdów szynowych, spełniając normy branżowe dla taboru publicznego.</p>
@@ -351,82 +365,7 @@
       </div>
     </div>
   </section>
-
-  <!-- GALERIA MEBLÓWKA -->
-  <div class="divider"></div>
-  <section id="galeria-meble">
-    <p class="section-label">Realizacje</p>
-    <h2 class="section-title">Galeria —<br/><em>tapicerka meblowa</em></h2>
-    <p class="section-body">Wybrane realizacje komercyjne — hotele, restauracje, biura i przestrzenie publiczne.</p>
-    <div class="gallery-grid" id="galleryMeble">
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',0)"><img src="mebl%C3%B3wka%201.jpg" alt="Realizacja meblowa 1" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',1)"><img src="mebl%C3%B3wka%202.jpg" alt="Realizacja meblowa 2" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',2)"><img src="mebl%C3%B3wka%203.jpg" alt="Realizacja meblowa 3" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',3)"><img src="mebl%C3%B3wka%204.jpg" alt="Realizacja meblowa 4" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',4)"><img src="mebl%C3%B3wka%205.jpg" alt="Realizacja meblowa 5" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',5)"><img src="mebl%C3%B3wka%206.jpg" alt="Realizacja meblowa 6" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',6)"><img src="mebl%C3%B3wka%207.jpg" alt="Realizacja meblowa 7" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',7)"><img src="mebl%C3%B3wka%208.jpg" alt="Realizacja meblowa 8" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',8)"><img src="mebl%C3%B3wka%209.jpg" alt="Realizacja meblowa 9" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',9)"><img src="mebl%C3%B3wka%2010.jpg" alt="Realizacja meblowa 10" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',10)"><img src="mebl%C3%B3wka%2011.jpg" alt="Realizacja meblowa 11" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',11)"><img src="mebl%C3%B3wka%2012.jpg" alt="Realizacja meblowa 12" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',12)"><img src="mebl%C3%B3wka%2013.jpg" alt="Realizacja meblowa 13" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',13)"><img src="mebl%C3%B3wka%2014.jpg" alt="Realizacja meblowa 14" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',14)"><img src="mebl%C3%B3wka%2015.jpg" alt="Realizacja meblowa 15" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',15)"><img src="mebl%C3%B3wka%2016.jpg" alt="Realizacja meblowa 16" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',16)"><img src="mebl%C3%B3wka%2017.jpg" alt="Realizacja meblowa 17" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',17)"><img src="mebl%C3%B3wka%2018.jpg" alt="Realizacja meblowa 18" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',18)"><img src="mebl%C3%B3wka%2019.jpg" alt="Realizacja meblowa 19" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',19)"><img src="mebl%C3%B3wka%2020.jpg" alt="Realizacja meblowa 20" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',20)"><img src="mebl%C3%B3wka%2021.jpg" alt="Realizacja meblowa 21" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',21)"><img src="mebl%C3%B3wka%2022.jpg" alt="Realizacja meblowa 22" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',22)"><img src="mebl%C3%B3wka%2023.jpg" alt="Realizacja meblowa 23" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble',23)"><img src="mebl%C3%B3wka%2024.jpg" alt="Realizacja meblowa 24" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
-    </div>
-  </section>
-
-  <!-- GALERIA SAMOCHODÓWKA -->
-  <div class="divider"></div>
-  <section id="galeria-auto">
-    <p class="section-label">Realizacje</p>
-    <h2 class="section-title">Galeria —<br/><em>tapicerka pojazdów i maszyn</em></h2>
-    <p class="section-body">Tapicerka seryjna i jednostkowa — pojazdy elektryczne, maszyny robocze, tabor, floty.</p>
-    <div class="gallery-grid" id="galleryAuto">
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',0)"><img src="samochod%C3%B3wka%200.jpg" alt="Realizacja samochodowa 0" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',1)"><img src="samochod%C3%B3wka%201.jpg" alt="Realizacja samochodowa 1" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',2)"><img src="samochod%C3%B3wka%202.jpg" alt="Realizacja samochodowa 2" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',3)"><img src="samochod%C3%B3wka%203.jpg" alt="Realizacja samochodowa 3" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',4)"><img src="samochod%C3%B3wka%204.jpg" alt="Realizacja samochodowa 4" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',5)"><img src="samochod%C3%B3wka%205.jpg" alt="Realizacja samochodowa 5" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',6)"><img src="samochod%C3%B3wka%206.jpg" alt="Realizacja samochodowa 6" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',7)"><img src="samochod%C3%B3wka%207.jpg" alt="Realizacja samochodowa 7" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',8)"><img src="samochod%C3%B3wka%208.jpg" alt="Realizacja samochodowa 8" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',9)"><img src="samochod%C3%B3wka%209.jpg" alt="Realizacja samochodowa 9" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',10)"><img src="samochod%C3%B3wka%2010.jpg" alt="Realizacja samochodowa 10" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',11)"><img src="samochod%C3%B3wka%2011.jpg" alt="Realizacja samochodowa 11" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',12)"><img src="samochod%C3%B3wka%2012.jpg" alt="Realizacja samochodowa 12" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',13)"><img src="samochod%C3%B3wka%2013.jpg" alt="Realizacja samochodowa 13" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',14)"><img src="samochod%C3%B3wka%2014.jpg" alt="Realizacja samochodowa 14" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',15)"><img src="samochod%C3%B3wka%2015.png" alt="Realizacja samochodowa 15" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',16)"><img src="samochod%C3%B3wka%2016.jpg" alt="Realizacja samochodowa 16" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',17)"><img src="samochod%C3%B3wka%2017.jpg" alt="Realizacja samochodowa 17" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',18)"><img src="samochod%C3%B3wka%2018.jpg" alt="Realizacja samochodowa 18" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',19)"><img src="samochod%C3%B3wka%2019.jpg" alt="Realizacja samochodowa 19" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',20)"><img src="samochod%C3%B3wka%2020.jpg" alt="Realizacja samochodowa 20" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',21)"><img src="samochod%C3%B3wka%2021.jpg" alt="Realizacja samochodowa 21" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',22)"><img src="samochod%C3%B3wka%2022.jpg" alt="Realizacja samochodowa 22" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',23)"><img src="samochod%C3%B3wka%2023.jpg" alt="Realizacja samochodowa 23" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',24)"><img src="samochod%C3%B3wka%2024.jpg" alt="Realizacja samochodowa 24" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',25)"><img src="samochod%C3%B3wka%2025.jpg" alt="Realizacja samochodowa 25" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',26)"><img src="samochod%C3%B3wka%2026.jpg" alt="Realizacja samochodowa 26" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',27)"><img src="samochod%C3%B3wka%2027.jpg" alt="Realizacja samochodowa 27" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',28)"><img src="samochod%C3%B3wka%2028.jpg" alt="Realizacja samochodowa 28" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto',29)"><img src="samochod%C3%B3wka%2029.jpg" alt="Realizacja samochodowa 29" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
-    </div>
-  </section>
-
-  <!-- BANNER -->
+<!-- BANNER -->
   <div class="divider-sm"></div>
   <div class="building-banner">
     <div class="building-overlay">
@@ -474,6 +413,14 @@
     </div>
   </section>
 
+  <!-- LISTWA -->
+  <div style="position:relative;z-index:1;width:1px;height:32px;background:var(--sand);margin:0 auto;"></div>
+  <div style="position:relative;z-index:1;width:100%;background:linear-gradient(135deg,#1E1C1A 0%,#2D3F42 50%,#1E1C1A 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:64px 24px;">
+    <div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:300;color:#fff;letter-spacing:0.04em;line-height:1.15;">Profesjonalny warsztat<br/><em style="font-style:italic;color:#C9BFB2;">w Twoim zasięgu</em></h2>
+      <p style="margin-top:16px;font-size:1rem;color:rgba(255,255,255,0.7);letter-spacing:0.08em;max-width:480px;">Gumniska 21B, 39-200 Dębica &nbsp;·&nbsp; Pon–Pt 8:00–16:00</p>
+    </div>
+  </div>
   <!-- LOKALIZACJA -->
   <div class="divider-sm"></div>
   <section id="lokalizacja" style="padding-top:48px;padding-bottom:80px;">
@@ -500,7 +447,7 @@
         <div class="info-cell-icon">👍</div>
         <div class="info-cell-title">Facebook</div>
         <div class="info-cell-body">Śledź nas, oglądaj realizacje i aktualności</div>
-        <a class="info-btn" href="https://www.facebook.com" target="_blank">Facebook</a>
+        <a class="info-btn" href="https://www.facebook.com/profile.php?id=61551353008015" target="_blank">Facebook</a>
       </div>
     </div>
     <div class="map-wrap">
@@ -514,6 +461,11 @@
     </div>
   </section>
 
+
+  <!-- TŁO KOŃCOWE -->
+  <div style="position:relative;z-index:1;width:100%;max-height:480px;overflow:hidden;">
+    <img src="tlo.jpg" alt="Tapicerek — warsztat" style="width:100%;max-height:480px;object-fit:cover;display:block;" onerror="this.style.display='none'"/>
+  </div>
   <footer>
     © 2025 Tapicerek — Gumniska 21B, 39-200 Dębica &nbsp;·&nbsp; Pon–Pt 8:00–16:00
   </footer>
@@ -526,7 +478,7 @@
     <span class="lightbox-next" onclick="changeLightbox(1)">›</span>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function showFileNames(input) {
       const id = input.id === 'fileUploadBiz' ? 'fileNamesBiz' : 'fileNames';
       document.getElementById(id).textContent = Array.from(input.files).map(f => f.name).join(', ') || '';
@@ -550,11 +502,4 @@
     }
     function closeLightboxOutside(e) { if (e.target === document.getElementById('lightbox')) closeLightbox(); }
     document.addEventListener('keydown', e => {
-      if (!document.getElementById('lightbox').classList.contains('active')) return;
-      if (e.key === 'ArrowRight') changeLightbox(1);
-      if (e.key === 'ArrowLeft') changeLightbox(-1);
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
-</body>
-</html>
+      if (!docum
