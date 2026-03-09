@@ -527,14 +527,11 @@
         <div class="material-name">Pianki i podsufitki</div>
         <p class="material-desc">Pianki tapicerskie różnej twardości oraz materiały na podsufitki samochodowe i inne elementy wykończeniowe.</p>
       </div>
+    <!-- ZDJĘCIE TKANINY -->
+    <div style="margin-top:32px;width:100%;max-height:400px;overflow:hidden;border:1px solid var(--sand);">
+      <img src="tkanina.jpg" alt="Tkaniny tapicerskie Tapicerek" style="width:100%;max-height:400px;object-fit:cover;display:block;" onerror="this.style.display='none'"/>
     </div>
   </section>
-
-
-  <!-- ZDJĘCIE TKANINY -->
-  <div style="position:relative;z-index:1;width:100%;max-height:420px;overflow:hidden;">
-    <img src="tkanina.jpg" alt="Tkaniny tapicerskie Tapicerek" style="width:100%;max-height:420px;object-fit:cover;display:block;filter:brightness(0.9);" onerror="this.style.display='none'"/>
-  </div>
 
   <!-- PROCES -->
   <section id="proces">
@@ -563,15 +560,15 @@
       </div>
 
     <!-- Zdjęcia procesu -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px;margin-top:48px;">
-      <div style="overflow:hidden;aspect-ratio:4/3;background:var(--sand);"><img src="1.jpg" alt="Proces 1" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
-      <div style="overflow:hidden;aspect-ratio:4/3;background:var(--sand);"><img src="2.jpg" alt="Proces 2" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
-      <div style="overflow:hidden;aspect-ratio:4/3;background:var(--sand);"><img src="3.jpg" alt="Proces 3" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
-      <div style="overflow:hidden;aspect-ratio:4/3;background:var(--sand);"><img src="4.jpg" alt="Proces 4" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
-      <div style="overflow:hidden;aspect-ratio:4/3;background:var(--sand);"><img src="5.jpg" alt="Proces 5" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
-      <div style="overflow:hidden;aspect-ratio:4/3;background:var(--sand);"><img src="6.jpg" alt="Proces 6" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
-      <div style="overflow:hidden;aspect-ratio:4/3;background:var(--sand);"><img src="7.jpg" alt="Proces 7" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
-      <div style="overflow:hidden;aspect-ratio:4/3;background:var(--sand);"><img src="8.jpg" alt="Proces 8" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
+    <div id="galleryProces" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px;margin-top:48px;">
+      <div class="gallery-item" onclick="openLightbox('galleryProces',0)" style="aspect-ratio:1/1;"><img src="1.jpg" alt="Proces 1" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
+      <div class="gallery-item" onclick="openLightbox('galleryProces',1)" style="aspect-ratio:1/1;"><img src="2.jpg" alt="Proces 2" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
+      <div class="gallery-item" onclick="openLightbox('galleryProces',2)" style="aspect-ratio:1/1;"><img src="3.jpg" alt="Proces 3" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
+      <div class="gallery-item" onclick="openLightbox('galleryProces',3)" style="aspect-ratio:1/1;"><img src="4.jpg" alt="Proces 4" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
+      <div class="gallery-item" onclick="openLightbox('galleryProces',4)" style="aspect-ratio:1/1;"><img src="5.jpg" alt="Proces 5" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
+      <div class="gallery-item" onclick="openLightbox('galleryProces',5)" style="aspect-ratio:1/1;"><img src="6.jpg" alt="Proces 6" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
+      <div class="gallery-item" onclick="openLightbox('galleryProces',6)" style="aspect-ratio:1/1;"><img src="7.jpg" alt="Proces 7" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
+      <div class="gallery-item" onclick="openLightbox('galleryProces',7)" style="aspect-ratio:1/1;"><img src="8.jpg" alt="Proces 8" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/></div>
     </div>
   </section>
 
@@ -585,7 +582,7 @@
       <div class="contact-info">
         <p>Podziel się szczegółami dotyczącymi mebla lub pojazdu, a my przygotujemy dla Ciebie spersonalizowaną wycenę. Możesz dołączyć zdjęcia, które pomogą nam dokładniej oszacować zakres prac.</p>
         <div class="contact-detail">
-          <a href="mailto:tapicerek.debica@gmail.com">tapicerek.debica@gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#6e1a0f1e070d0b1c0b05400a0b0c070d0f2e09030f0702400d0103"><span class="__cf_email__" data-cfemail="92e6f3e2fbf1f7e0f7f9bcf6f7f0fbf1f3d2f5fff3fbfebcf1fdff">[email&#160;protected]</span></a>
           <a href="tel:+48606109776">606 109 776</a>
         </div>
       </div>
@@ -664,12 +661,6 @@
       <a href="https://www.google.com/maps/search/Tapicerek+Jolanta+Kwolek-Sokół+Gumniska+21B+Dębica" target="_blank">Otwórz w Google Maps →</a>
     </div>
   </section>
-
-
-  <!-- TŁO KOŃCOWE -->
-  <div style="position:relative;z-index:1;width:100%;max-height:480px;overflow:hidden;">
-    <img src="tlo.jpg" alt="Tapicerek — warsztat" style="width:100%;max-height:480px;object-fit:cover;display:block;" onerror="this.style.display='none'"/>
-  </div>
   <footer>
     © 2025 Tapicerek — Gumniska 21B, 39-200 Dębica &nbsp;·&nbsp; Pon–Pt 8:00–16:00
   </footer>
@@ -682,7 +673,7 @@
     <span class="lightbox-next" onclick="changeLightbox(1)">›</span>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function showFileNames(input) {
       const names = Array.from(input.files).map(f => f.name).join(', ');
       document.getElementById('fileNames').textContent = names || '';
@@ -703,13 +694,4 @@
     }
 
     function showLightboxImage() {
-      document.getElementById('lightboxImg').src = currentGallery[currentIndex].src;
-    }
-
-    function changeLightbox(dir) {
-      currentIndex = (currentIndex + dir + currentGallery.length) % currentGallery.length;
-      showLightboxImage();
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').classLis
+      document.getElementById('lightboxImg').src = currentGallery[currentInd
