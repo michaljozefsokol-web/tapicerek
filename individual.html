@@ -432,7 +432,7 @@
         <div class="gallery-caption">Tapicerka samochodowa 14</div>
       </div>
       <div class="gallery-item" onclick="openLightbox('galleryAuto', 15)">
-        <img src="samochod%C3%B3wka%2015.jpg" alt="Tapicerka samochodowa 15" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
+        <img src="samochod%C3%B3wka%2015.png" alt="Tapicerka samochodowa 15" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
         <div class="gallery-caption">Tapicerka samochodowa 15</div>
       </div>
       <div class="gallery-item" onclick="openLightbox('galleryAuto', 16)">
@@ -490,10 +490,6 @@
       <div class="gallery-item" onclick="openLightbox('galleryAuto', 29)">
         <img src="samochod%C3%B3wka%2029.jpg" alt="Tapicerka samochodowa 29" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
         <div class="gallery-caption">Tapicerka samochodowa 29</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 30)">
-        <img src="samochod%C3%B3wka%2030.jpg" alt="Tapicerka samochodowa 30" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 30</div>
       </div>
     </div>
   </section>
@@ -607,11 +603,9 @@
 
   <!-- NASZ BUDYNEK -->
   <div style="position:relative;z-index:1;width:1px;height:32px;background:var(--sand);margin:0 auto;"></div>
-  <div class="building-banner">
-    <img src="Budynek.png" alt="Warsztat Tapicerek — Gumniska 21B, Dębica"
-         onerror="this.style.display='none';this.parentElement.style.background='var(--charcoal)';this.parentElement.style.minHeight='300px'"/>
+  <div class="building-banner" style="background: linear-gradient(135deg, #1E1C1A 0%, #3A2E28 50%, #1E1C1A 100%);">
     <div class="building-overlay">
-      <h2>Profesjonalny warsztat<br/><em>w sercu Dębicy</em></h2>
+      <h2>Profesjonalny warsztat<br/><em>w Twoim zasięgu</em></h2>
       <p>Gumniska 21B, 39-200 Dębica &nbsp;·&nbsp; Pon–Pt 8:00–16:00</p>
     </div>
   </div>
@@ -642,7 +636,7 @@
         <div class="info-cell-icon">👍</div>
         <div class="info-cell-title">Facebook</div>
         <div class="info-cell-body">Śledź nas, oglądaj realizacje i aktualności</div>
-        <a class="info-btn" href="https://www.facebook.com" target="_blank">Odwiedź profil</a>
+        <a class="info-btn" href="https://www.facebook.com/tapicerek.debica" target="_blank">Facebook</a>
       </div>
     </div>
     <div class="map-wrap">
@@ -707,12 +701,4 @@
     }
 
     document.addEventListener('keydown', e => {
-      if (!document.getElementById('lightbox').classList.contains('active')) return;
-      if (e.key === 'ArrowRight') changeLightbox(1);
-      if (e.key === 'ArrowLeft') changeLightbox(-1);
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
-
-</body>
-</html>
+      if (!documen

@@ -3,72 +3,82 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tapicerek — Usługi dla Firm</title>
+  <title>Tapicerek — Klient Biznesowy</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@200;300;400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --cream: #F0EDE8; --warm-white: #FDFCFA; --charcoal: #1E1C1A; --stone: #8C8780; --sand: #C9BFB2; --accent: #3A4F52; }
     html { scroll-behavior: smooth; font-size: 18px; }
     body { background: var(--cream); color: var(--charcoal); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; }
-    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23b5a99a' opacity='0.22'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; background: rgba(240,237,232,0.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='none'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23b5a99a' opacity='0.18'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(240,237,232,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
     .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; font-style: italic; letter-spacing: 0.05em; text-decoration: none; color: var(--accent); }
     .nav-back { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.2s; }
     .nav-back:hover { color: var(--accent); }
-    .hero { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 120px 10vw 80px; overflow: hidden; }
-    .hero-bg-text { position: absolute; right: -2vw; top: 50%; transform: translateY(-50%); font-family: 'Cormorant Garamond', serif; font-size: clamp(8rem, 18vw, 18rem); font-weight: 300; color: transparent; -webkit-text-stroke: 1px var(--sand); letter-spacing: -0.02em; pointer-events: none; user-select: none; white-space: nowrap; opacity: 0.5; }
-    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.9s 0.2s forwards; }
-    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.05; letter-spacing: 0.02em; max-width: 680px; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
+
+    /* HERO */
+    .hero { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 140px 10vw 80px; overflow: hidden; }
+    .hero-watermark { position: absolute; right: -2vw; top: 50%; transform: translateY(-50%); font-family: 'Cormorant Garamond', serif; font-size: clamp(8rem, 20vw, 18rem); font-weight: 300; color: rgba(58,79,82,0.06); line-height: 1; pointer-events: none; letter-spacing: -0.02em; user-select: none; }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.9s 0.2s forwards; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300; line-height: 1.1; letter-spacing: 0.02em; max-width: 680px; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
     .hero-title em { font-style: italic; color: var(--accent); }
-    .hero-sub { margin-top: 24px; max-width: 480px; font-size: 0.95rem; color: var(--stone); opacity: 0; animation: fadeUp 0.9s 0.65s forwards; }
-    .hero-cta { margin-top: 44px; display: inline-block; padding: 14px 36px; background: var(--accent); color: var(--warm-white); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: opacity 0.3s; opacity: 0; animation: fadeUp 0.9s 0.85s forwards; }
+    .hero-sub { margin-top: 28px; max-width: 520px; font-size: 1rem; color: var(--stone); line-height: 1.75; opacity: 0; animation: fadeUp 0.9s 0.6s forwards; }
+    .hero-cta { margin-top: 48px; display: inline-block; padding: 14px 40px; background: var(--accent); color: var(--warm-white); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: opacity 0.3s; opacity: 0; animation: fadeUp 0.9s 0.8s forwards; }
     .hero-cta:hover { opacity: 0.85; }
-    .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--stone); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
+    .scroll-hint { position: absolute; bottom: 36px; left: 10vw; display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--stone); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
     .scroll-hint::after { content: ''; display: block; width: 1px; height: 36px; background: var(--sand); animation: scrollLine 1.8s 1.4s infinite; }
-    @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
     .divider { position: relative; z-index: 1; width: 1px; height: 60px; background: var(--sand); margin: 0 auto; }
-    section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 80px 40px; }
+    .divider-sm { position: relative; z-index: 1; width: 1px; height: 32px; background: var(--sand); margin: 0 auto; }
+
+    section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
     .section-label { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
     .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; line-height: 1.2; margin-bottom: 20px; }
     .section-title em { font-style: italic; color: var(--accent); }
-    .section-body { color: var(--stone); max-width: 560px; font-size: 0.95rem; }
-    .stats-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; border: 1px solid var(--sand); }
-    .stat { background: var(--warm-white); padding: 36px 28px; border-right: 1px solid var(--sand); text-align: center; }
-    .stat:last-child { border-right: none; }
-    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--accent); line-height: 1; }
-    .stat-label { margin-top: 6px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
-    .services-table { width: 100%; margin-top: 48px; border-collapse: collapse; }
-    .services-table th { text-align: left; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); padding: 12px 16px; border-bottom: 1px solid var(--sand); }
-    .services-table td { padding: 20px 16px; border-bottom: 1px solid rgba(201,191,178,0.4); font-size: 0.9rem; vertical-align: top; }
-    .services-table td:first-child { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; white-space: nowrap; padding-right: 24px; }
-    .services-table tr:hover td { background: rgba(253,252,250,0.6); }
-    .tag { display: inline-block; padding: 3px 10px; border: 1px solid var(--accent); font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-top: 4px; }
-    .industries-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2px; margin-top: 48px; }
-    .industry-item { background: var(--warm-white); padding: 28px 24px; border: 1px solid var(--sand); transition: background 0.2s; }
-    .industry-item:hover { background: #fff; }
-    .industry-icon { font-size: 1.4rem; margin-bottom: 12px; }
-    .industry-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
-    .industry-sub { font-size: 0.75rem; color: var(--stone); margin-top: 4px; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; }
-    @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } nav { padding: 20px 24px; } section { padding: 60px 24px; } .stats-band { grid-template-columns: 1fr; } .stat { border-right: none; border-bottom: 1px solid var(--sand); } .hero { padding: 120px 24px 80px; } }
-    .contact-info p { font-size: 0.88rem; color: var(--stone); margin-bottom: 24px; }
-    .contact-detail { display: flex; flex-direction: column; gap: 12px; }
-    .contact-detail a { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid var(--sand); padding-bottom: 4px; transition: border-color 0.2s; }
-    .contact-detail a:hover { border-color: var(--accent); }
-    .form-group { display: flex; flex-direction: column; gap: 16px; }
-    .form-group input, .form-group textarea, .form-group select { background: var(--warm-white); border: 1px solid var(--sand); padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; color: var(--charcoal); outline: none; transition: border-color 0.2s; resize: none; appearance: none; width: 100%; }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
-    .form-group textarea { min-height: 100px; }
-    .file-upload-label { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 20px; border: 1px dashed var(--sand); background: var(--warm-white); cursor: pointer; transition: border-color 0.2s; text-align: center; }
-    .file-upload-label:hover { border-color: var(--accent); }
-    .file-upload-label .upload-icon { font-size: 1.4rem; }
-    .file-upload-label .upload-text { font-size: 0.8rem; color: var(--stone); letter-spacing: 0.08em; }
-    .file-upload-label .upload-hint { font-size: 0.7rem; color: var(--sand); }
-    input[type="file"] { display: none; }
-    .file-names { font-size: 0.75rem; color: var(--accent); min-height: 18px; }
-    .form-submit { align-self: flex-start; padding: 12px 32px; background: var(--accent); color: var(--warm-white); border: none; font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
-    .form-submit:hover { opacity: 0.85; }
-    footer { position: relative; z-index: 1; text-align: center; padding: 40px 24px; border-top: 1px solid var(--sand); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); }
+    .section-body { color: var(--stone); max-width: 620px; font-size: 1rem; }
+
+    /* KPI */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 48px; border: 1px solid var(--sand); }
+    .kpi-card { background: var(--warm-white); padding: 32px 24px; border-right: 1px solid var(--sand); position: relative; }
+    .kpi-card:last-child { border-right: none; }
+    .kpi-icon { font-size: 1.6rem; margin-bottom: 14px; }
+    .kpi-value { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: var(--accent); line-height: 1.1; margin-bottom: 8px; }
+    .kpi-label { font-size: 0.82rem; color: var(--stone); line-height: 1.5; }
+
+    /* Services */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; margin-top: 48px; border: 1px solid var(--sand); }
+    .service-card { background: var(--warm-white); padding: 36px 28px; border-right: 1px solid var(--sand); border-bottom: 1px solid var(--sand); transition: background 0.3s; }
+    .service-card:hover { background: #fff; }
+    .service-icon { font-size: 1.8rem; margin-bottom: 18px; }
+    .service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 10px; }
+    .service-desc { font-size: 0.88rem; color: var(--stone); line-height: 1.65; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .service-tag { font-size: 0.7rem; padding: 3px 10px; border: 1px solid var(--sand); color: var(--stone); letter-spacing: 0.06em; }
+
+    /* Case studies */
+    .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+    @media (max-width: 700px) { .case-grid { grid-template-columns: 1fr; } }
+    .case-card { background: var(--warm-white); border: 1px solid var(--sand); padding: 40px 36px; position: relative; overflow: hidden; }
+    .case-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); }
+    .case-watermark { position: absolute; bottom: -10px; right: 16px; font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(58,79,82,0.06); line-height: 1; pointer-events: none; }
+    .case-label { font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .case-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; margin-bottom: 16px; line-height: 1.15; }
+    .case-name em { font-style: italic; color: var(--accent); }
+    .case-body { font-size: 0.9rem; color: var(--stone); line-height: 1.7; margin-bottom: 20px; }
+    .case-stats { display: flex; gap: 24px; flex-wrap: wrap; border-top: 1px solid var(--sand); padding-top: 20px; margin-top: 4px; }
+    .case-stat-value { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--accent); }
+    .case-stat-label { font-size: 0.72rem; color: var(--stone); letter-spacing: 0.08em; }
+
+    /* Sectors */
+    .sectors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2px; margin-top: 48px; border: 1px solid var(--sand); }
+    .sector-card { background: var(--warm-white); padding: 28px 22px; border-right: 1px solid var(--sand); text-align: center; transition: background 0.3s; }
+    .sector-card:last-child { border-right: none; }
+    .sector-card:hover { background: #fff; }
+    .sector-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .sector-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-bottom: 6px; }
+    .sector-desc { font-size: 0.8rem; color: var(--stone); line-height: 1.5; }
+
     /* GALLERY */
     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 4px; margin-top: 48px; }
     .gallery-item { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--sand); cursor: pointer; }
@@ -76,22 +86,68 @@
     .gallery-item:hover img { transform: scale(1.05); }
     .gallery-item .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(30,28,26,0.65); color: #fff; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 12px; opacity: 0; transition: opacity 0.3s; }
     .gallery-item:hover .gallery-caption { opacity: 1; }
+
+    /* Lightbox */
     .lightbox { display: none; position: fixed; inset: 0; background: rgba(30,28,26,0.92); z-index: 1000; align-items: center; justify-content: center; }
     .lightbox.active { display: flex; }
-    .lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; }
-    .lightbox-close { position: absolute; top: 24px; right: 32px; color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.7; }
+    .lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .lightbox-close { position: absolute; top: 24px; right: 32px; color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; }
     .lightbox-close:hover { opacity: 1; }
-    .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.6; padding: 12px; }
-    .lightbox-prev { left: 20px; } .lightbox-next { right: 20px; }
+    .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 2rem; cursor: pointer; opacity: 0.6; padding: 12px; transition: opacity 0.2s; }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
     .lightbox-prev:hover, .lightbox-next:hover { opacity: 1; }
-    .building-banner { position: relative; z-index: 1; width: 100%; max-height: 520px; overflow: hidden; }
-    .building-banner img { width: 100%; height: 520px; object-fit: cover; display: block; filter: brightness(0.78); }
-    .building-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
-    .building-overlay h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; color: #fff; letter-spacing: 0.04em; line-height: 1.15; text-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+
+    /* Building banner */
+    .building-banner { position: relative; z-index: 1; width: 100%; min-height: 340px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1a2a2c 0%, #3A4F52 50%, #1a2a2c 100%); }
+    .building-overlay { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 24px; }
+    .building-overlay h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; color: #fff; letter-spacing: 0.04em; line-height: 1.15; }
     .building-overlay h2 em { font-style: italic; color: var(--sand); }
-    .building-overlay p { margin-top: 16px; font-size: 1rem; color: rgba(255,255,255,0.82); max-width: 480px; text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .building-overlay p { margin-top: 16px; font-size: 1rem; color: rgba(255,255,255,0.72); letter-spacing: 0.08em; max-width: 480px; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; }
+    .contact-info p { font-size: 0.92rem; color: var(--stone); margin-bottom: 24px; }
+    .contact-detail { display: flex; flex-direction: column; gap: 12px; }
+    .contact-detail a { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid var(--sand); padding-bottom: 4px; transition: border-color 0.2s; }
+    .contact-detail a:hover { border-color: var(--accent); }
+    .form-group { display: flex; flex-direction: column; gap: 16px; }
+    .form-group input, .form-group textarea, .form-group select { background: var(--warm-white); border: 1px solid var(--sand); padding: 12px 16px; font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 300; color: var(--charcoal); outline: none; transition: border-color 0.2s; resize: none; appearance: none; width: 100%; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { min-height: 110px; }
+    .file-upload-label { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 20px; border: 1px dashed var(--sand); background: var(--warm-white); cursor: pointer; transition: border-color 0.2s; text-align: center; }
+    .file-upload-label:hover { border-color: var(--accent); }
+    .file-upload-label .upload-icon { font-size: 1.4rem; }
+    .file-upload-label .upload-text { font-size: 0.85rem; color: var(--stone); letter-spacing: 0.08em; }
+    .file-upload-label .upload-hint { font-size: 0.72rem; color: var(--sand); }
+    input[type="file"] { display: none; }
+    .file-names { font-size: 0.78rem; color: var(--accent); min-height: 18px; }
+    .form-submit { align-self: flex-start; padding: 13px 34px; background: var(--accent); color: var(--warm-white); border: none; font-family: 'Jost', sans-serif; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+    .form-submit:hover { opacity: 0.85; }
+
+    /* Info bar & map */
+    .info-bar { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 2px; margin-bottom: 32px; border: 1px solid var(--sand); }
+    .info-cell { background: var(--warm-white); padding: 24px 20px; border-right: 1px solid var(--sand); }
+    .info-cell:last-child { border-right: none; }
+    .info-cell-icon { font-size: 1.2rem; margin-bottom: 8px; }
+    .info-cell-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-bottom: 4px; }
+    .info-cell-body { font-size: 0.85rem; color: var(--stone); line-height: 1.6; margin-bottom: 10px; }
+    .info-btn { display: inline-block; padding: 6px 14px; border: 1px solid var(--accent); color: var(--accent); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .info-btn:hover { background: var(--accent); color: var(--warm-white); }
+    .map-wrap { width: 100%; height: 420px; border: 1px solid var(--sand); overflow: hidden; }
+    .map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .map-link { margin-top: 12px; text-align: right; }
+    .map-link a { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); text-decoration: none; border-bottom: 1px solid var(--sand); padding-bottom: 2px; transition: color 0.2s; }
+    .map-link a:hover { color: var(--accent); }
+
+    footer { position: relative; z-index: 1; text-align: center; padding: 40px 24px; border-top: 1px solid var(--sand); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); }
+
+    @media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } nav { padding: 16px 24px; } section { padding: 60px 24px; } .kpi-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr 1fr; } .kpi-grid { grid-template-columns: 1fr; } }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0}to{opacity:1} }
+    @keyframes scrollLine { 0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom} }
   </style>
 </head>
 <body>
@@ -101,410 +157,364 @@
     <a class="nav-back" href="index.html">← Zmień typ klienta</a>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg-text">Biznes</div>
-    <p class="hero-eyebrow">Usługi dla Firm i Partnerów</p>
-    <h1 class="hero-title">Wyposażanie przestrzeni<br/>na <em>dużą skalę.</em></h1>
-    <p class="hero-sub">Współpracujemy z hotelami, restauracjami, biurami i projektantami wnętrz, dostarczając wysokiej jakości tapicerkę — na czas i zgodnie z budżetem.</p>
+    <div class="hero-watermark">Biznes</div>
+    <p class="hero-eyebrow">Partnerzy Biznesowi</p>
+    <h1 class="hero-title">Produkcja i tapicerka<br/>na <em>skalę przemysłową.</em></h1>
+    <p class="hero-sub">Jesteśmy dostawcą tapicerowanych elementów siedzących i wykończeniowych dla firm produkcyjnych, transportowych, hotelarskich i aranżacyjnych. Działamy od 1994 roku — terminowo, seryjnie, niezawodnie.</p>
     <a class="hero-cta" href="#kontakt">Nawiąż współpracę</a>
     <span class="scroll-hint">Przewiń</span>
   </section>
 
   <div class="divider"></div>
 
+  <!-- KPI -->
   <section id="o-nas">
-    <p class="section-label">Dlaczego warto z nami współpracować</p>
-    <h2 class="section-title">Stworzone pod<br/><em>wymagania biznesu</em></h2>
-    <p class="section-body">Wiemy, że klienci biznesowi działają pod presją czasu, w większej skali i z wyższą stawką. Nasz proces jest właśnie do tego dostosowany.</p>
-    <div class="stats-band">
-      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Zrealizowanych projektów komercyjnych</div></div>
-      <div class="stat"><div class="stat-num">48h</div><div class="stat-label">Średni czas przygotowania wyceny</div></div>
-      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Terminowość realizacji</div></div>
+    <p class="section-label">Tapicerek w liczbach</p>
+    <h2 class="section-title">30 lat doświadczenia<br/>i <em>mierzalne rezultaty</em></h2>
+    <p class="section-body">Nie jesteśmy małą pracownią. Jesteśmy sprawdzonym partnerem produkcyjnym z własnym zespołem, zapleczem technicznym i wieloletnimi umowami z wiodącymi firmami w Polsce.</p>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon">📅</div>
+        <div class="kpi-value">1994</div>
+        <div class="kpi-label">Rok założenia — działamy nieprzerwanie od ponad 30 lat</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🤝</div>
+        <div class="kpi-value">26 lat</div>
+        <div class="kpi-label">Współpracy z firmą Melex — dostawca certyfikowany</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">👷</div>
+        <div class="kpi-value">9 osób</div>
+        <div class="kpi-label">Doświadczonych pracowników w naszym zespole</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🏭</div>
+        <div class="kpi-value">X+ firm</div>
+        <div class="kpi-label">Aktywnych partnerów biznesowych w Polsce</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🪑</div>
+        <div class="kpi-value">X szt.</div>
+        <div class="kpi-label">Ustandaryzowanych siedzeń, zagłówków i oparć rocznie</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">📦</div>
+        <div class="kpi-value">X proj.</div>
+        <div class="kpi-label">Realizowanych projektów biznesowych rocznie</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🚚</div>
+        <div class="kpi-value">Cała Polska</div>
+        <div class="kpi-label">Zasięg dostaw — dostarczamy do firm w całym kraju</div>
+      </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
+  <!-- USŁUGI BIZNESOWE -->
   <section id="uslugi">
-    <p class="section-label">Usługi</p>
-    <h2 class="section-title">Co oferujemy<br/>dla <em>klientów biznesowych</em></h2>
-    <table class="services-table">
-      <thead>
-        <tr><th>Usługa</th><th>Opis</th><th>Dla kogo</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Retapicerka masowa</td>
-          <td>Renowacja dużych ilości mebli z jednolitym wykończeniem wszystkich sztuk. Dobór tkanin w cenie.</td>
-          <td><span class="tag">Hotele</span> <span class="tag">Biura</span></td>
-        </tr>
-        <tr>
-          <td>Pakiety aranżacyjne</td>
-          <td>Kompleksowe wyposażenie nowych obiektów — od doboru tkanin po dostawę i montaż.</td>
-          <td><span class="tag">Restauracje</span> <span class="tag">Bary</span></td>
-        </tr>
-        <tr>
-          <td>Obsługa serwisowa</td>
-          <td>Regularne przeglądy i umowy serwisowe, dzięki którym meble wyglądają nienagannie przez cały rok.</td>
-          <td><span class="tag">Hotelarstwo</span> <span class="tag">Handel</span></td>
-        </tr>
-        <tr>
-          <td>Ceny dla partnerów</td>
-          <td>Preferencyjne stawki dla projektantów wnętrz, architektów i sprzedawców mebli przy kwalifikujących się zamówieniach.</td>
-          <td><span class="tag">Projektanci</span> <span class="tag">Partnerzy</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <div class="divider"></div>
-
-  <section id="branze">
-    <p class="section-label">Branże, którym służymy</p>
-    <h2 class="section-title">Zaufany w wielu<br/><em>sektorach</em></h2>
-    <div class="industries-grid">
-      <div class="industry-item"><div class="industry-icon">🏨</div><div class="industry-name">Hotelarstwo</div><div class="industry-sub">Hotele i kurorty</div></div>
-      <div class="industry-item"><div class="industry-icon">🍽️</div><div class="industry-name">Gastronomia</div><div class="industry-sub">Restauracje i bary</div></div>
-      <div class="industry-item"><div class="industry-icon">🏢</div><div class="industry-name">Korporacje</div><div class="industry-sub">Biura i lobby</div></div>
-      <div class="industry-item"><div class="industry-icon">🎨</div><div class="industry-name">Design i architektura</div><div class="industry-sub">Studia projektowe</div></div>
-      <div class="industry-item"><div class="industry-icon">🛍️</div><div class="industry-name">Handel</div><div class="industry-sub">Showroomy i sklepy</div></div>
+    <p class="section-label">Co oferujemy</p>
+    <h2 class="section-title">Kompleksowe usługi<br/>dla <em>partnerów biznesowych</em></h2>
+    <p class="section-body">Oferujemy pełen zakres produkcji tapicerowanej — od pojedynczych serii pilotażowych po stałe dostawy masowe. Każde zlecenie realizujemy z pełną dokumentacją i powtarzalną jakością.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏭</div>
+        <div class="service-name">Produkcja seryjna siedzeń</div>
+        <p class="service-desc">Produkujemy ustandaryzowane siedzenia, zagłówki i oparcia w powtarzalnych seriach. Stały wzorzec, kontrola jakości, terminowe dostawy. Idealne dla producentów pojazdów elektrycznych, maszyn i taboru.</p>
+        <div class="service-tags"><span class="service-tag">Melex</span><span class="service-tag">Pojazdy elektryczne</span><span class="service-tag">Maszyny robocze</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚌</div>
+        <div class="service-name">Tapicerka taboru i flot</div>
+        <p class="service-desc">Kompleksowa obsługa tapicerska flot pojazdów — autobusy, tramwaje, pociągi, meleksy, wózki widłowe. Szybka realizacja, materiały do intensywnego użytkowania, serwis gwarancyjny.</p>
+        <div class="service-tags"><span class="service-tag">Tabor kolejowy</span><span class="service-tag">Transport miejski</span><span class="service-tag">Floty firmowe</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏨</div>
+        <div class="service-name">Aranżacje hotelowe i gastronomiczne</div>
+        <p class="service-desc">Wyposażamy hotele, restauracje i obiekty konferencyjne w tapicerowane meble, siedziska, panele ścienne i loże. Realizujemy zarówno projekty aranżacyjne jak i bieżący serwis tapicerski.</p>
+        <div class="service-tags"><span class="service-tag">Hotele</span><span class="service-tag">Restauracje</span><span class="service-tag">Konferencje</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <div class="service-name">Kontrakty deweloperskie</div>
+        <p class="service-desc">Współpracujemy z architektami wnętrz, deweloperami i wykonawcami generalnymi. Dostarczamy kompletne elementy tapicerowane wg projektu — z materiałem inwestora lub z naszego katalogu.</p>
+        <div class="service-tags"><span class="service-tag">Architektura wnętrz</span><span class="service-tag">Deweloperzy</span><span class="service-tag">Fit-out</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔩</div>
+        <div class="service-name">Elementy specjalistyczne</div>
+        <p class="service-desc">Miechy, koszulki na przewody, kozetki medyczne, fotele fryzjerskie, siedziska do siłowni — produkujemy wszelkie niestandardowe elementy tapicerowane dla przemysłu i usług.</p>
+        <div class="service-tags"><span class="service-tag">Medycyna</span><span class="service-tag">Fitness</span><span class="service-tag">Przemysł</span></div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔄</div>
+        <div class="service-name">Serwis i retapicerka masowa</div>
+        <p class="service-desc">Obsługujemy umowy serwisowe na bieżącą retapicerkę i naprawy — dla firm z flotami pojazdów, sieci hoteli i obiektów publicznych. Elastyczny harmonogram, priorytetowe terminy.</p>
+        <div class="service-tags"><span class="service-tag">Umowy serwisowe</span><span class="service-tag">SLA</span><span class="service-tag">Retapicerka masowa</span></div>
+      </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <section id="kontakt">
-    <p class="section-label">Skontaktuj się</p>
-    <h2 class="section-title">Porozmawiajmy<br/>o <em>Twoim projekcie</em></h2>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <p>Opisz zakres swojego projektu, a my umówimy rozmowę, by omówić, jak możemy wesprzeć Twoją firmę. Możesz dołączyć zdjęcia lub dokumenty projektowe.</p>
-        <div class="contact-detail">
-          <a href="/cdn-cgi/l/email-protection#f78396879e949285929cd99392959e9496b7909a969e9bd994989a"><span class="__cf_email__" data-cfemail="82f6e3f2ebe1e7f0e7e9ace6e7e0ebe1e3c2e5efe3ebeeace1edef">[email&#160;protected]</span></a>
-          <a href="tel:+48606109776">606 109 776</a>
+  <!-- CASE STUDIES -->
+  <section id="wspolprace">
+    <p class="section-label">Wybrane współprace</p>
+    <h2 class="section-title">Partnerstwa,<br/>które <em>mówią same za siebie</em></h2>
+    <p class="section-body">Wieloletnie umowy z wiodącymi firmami w Polsce są najlepszym dowodem na jakość i terminowość naszej pracy.</p>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-watermark">Melex</div>
+        <div class="case-label">Współpraca od 1999 roku</div>
+        <div class="case-name">Melex —<br/><em>producent pojazdów elektrycznych</em></div>
+        <p class="case-body">Od ponad 26 lat jesteśmy certyfikowanym dostawcą siedzisk tapicerowanych dla firmy Melex — wiodącego polskiego producenta pojazdów elektrycznych eksportowanych na cały świat. Produkujemy siedzenia, zagłówki i oparcia w powtarzalnych seriach, spełniając rygorystyczne standardy jakościowe i terminowe wymagania linii produkcyjnej.</p>
+        <div class="case-stats">
+          <div>
+            <div class="case-stat-value">26 lat</div>
+            <div class="case-stat-label">Aktywnej współpracy</div>
+          </div>
+          <div>
+            <div class="case-stat-value">Produkcja seryjna</div>
+            <div class="case-stat-label">Ustandaryzowane elementy</div>
+          </div>
+          <div>
+            <div class="case-stat-value">100%</div>
+            <div class="case-stat-label">Terminowość dostaw</div>
+          </div>
         </div>
       </div>
-      <div class="form-group">
-        <input type="text" placeholder="Imię, nazwisko i nazwa firmy"/>
-        <input type="email" placeholder="Firmowy adres e-mail"/>
-        <select>
-          <option value="" disabled selected>Branża</option>
-          <option>Hotelarstwo</option>
-          <option>Gastronomia</option>
-          <option>Korporacje / Biura</option>
-          <option>Projektowanie wnętrz / Architektura</option>
-          <option>Handel</option>
-          <option>Inne</option>
-        </select>
-        <input type="number" placeholder="Szacowana liczba sztuk"/>
-        <textarea placeholder="Opisz swój projekt…"></textarea>
-        <label class="file-upload-label" for="fileUploadBiz">
-          <span class="upload-icon">📎</span>
-          <span class="upload-text">Dodaj zdjęcia lub pliki projektowe</span>
-          <span class="upload-hint">JPG, PNG, PDF — maks. kilka plików</span>
-        </label>
-        <input type="file" id="fileUploadBiz" multiple accept="image/*,.pdf" onchange="showFileNames(this)"/>
-        <div class="file-names" id="fileNamesBiz"></div>
-        <button class="form-submit">Wyślij zapytanie</button>
+      <div class="case-card">
+        <div class="case-watermark">Tabor</div>
+        <div class="case-label">Współpraca długoterminowa</div>
+        <div class="case-name">Tabor Dębica —<br/><em>producent taboru kolejowego</em></div>
+        <p class="case-body">Współpracujemy z Tabor Dębica przy tapicerowaniu elementów taboru kolejowego i komunikacji zbiorowej. Realizujemy zlecenia na siedziska pasażerskie, panele i inne elementy wykończenia wnętrz wagonów i pojazdów szynowych, spełniając normy branżowe dla taboru publicznego.</p>
+        <div class="case-stats">
+          <div>
+            <div class="case-stat-value">Tabor kolejowy</div>
+            <div class="case-stat-label">Siedziska i wykończenia</div>
+          </div>
+          <div>
+            <div class="case-stat-value">Normy branżowe</div>
+            <div class="case-stat-label">Pełna zgodność</div>
+          </div>
+          <div>
+            <div class="case-stat-value">Dębica</div>
+            <div class="case-stat-label">Lokalny partner</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- GALERIA — MEBLÓWKA -->
   <div class="divider"></div>
-  <section id="galeria-meble" style="position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:80px 40px;">
+
+  <!-- SEKTORY -->
+  <section id="sektory">
+    <p class="section-label">Sektory</p>
+    <h2 class="section-title">Zaufany partner<br/>w <em>wielu branżach</em></h2>
+    <p class="section-body">Nasze usługi trafiają do firm z bardzo różnych sektorów — łączy je jedno: wymagania co do jakości, powtarzalności i terminowości.</p>
+    <div class="sectors-grid">
+      <div class="sector-card">
+        <div class="sector-icon">⚡</div>
+        <div class="sector-name">Pojazdy elektryczne</div>
+        <p class="sector-desc">Meleksy, wózki golfowe, pojazdy komunalne</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🚆</div>
+        <div class="sector-name">Tabor i transport</div>
+        <p class="sector-desc">Kolej, tramwaje, autobusy, komunikacja publiczna</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏨</div>
+        <div class="sector-name">Hotelarstwo</div>
+        <p class="sector-desc">Hotele, pensjonaty, obiekty konferencyjne</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🍽️</div>
+        <div class="sector-name">Gastronomia</div>
+        <p class="sector-desc">Restauracje, bary, loże i strefy VIP</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏗️</div>
+        <div class="sector-name">Budownictwo i design</div>
+        <p class="sector-desc">Architektura wnętrz, deweloperzy, fit-out</p>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏥</div>
+        <div class="sector-name">Medycyna i wellness</div>
+        <p class="sector-desc">Gabinety, przychodnie, SPA, siłownie</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA MEBLÓWKA -->
+  <div class="divider"></div>
+  <section id="galeria-meble">
     <p class="section-label">Realizacje</p>
     <h2 class="section-title">Galeria —<br/><em>tapicerka meblowa</em></h2>
-    <p class="section-body" style="color:var(--stone);max-width:560px;font-size:1rem;">Wybrane realizacje komercyjne — hotele, restauracje, biura.</p>
-        <div class="gallery-grid" id="galleryMeble">
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 0)">
-        <img src="mebl%C3%B3wka%201.jpg" alt="Tapicerka meblowa 1" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 1</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 1)">
-        <img src="mebl%C3%B3wka%202.jpg" alt="Tapicerka meblowa 2" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 2</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 2)">
-        <img src="mebl%C3%B3wka%203.jpg" alt="Tapicerka meblowa 3" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 3</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 3)">
-        <img src="mebl%C3%B3wka%204.jpg" alt="Tapicerka meblowa 4" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 4</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 4)">
-        <img src="mebl%C3%B3wka%205.jpg" alt="Tapicerka meblowa 5" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 5</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 5)">
-        <img src="mebl%C3%B3wka%206.jpg" alt="Tapicerka meblowa 6" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 6</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 6)">
-        <img src="mebl%C3%B3wka%207.jpg" alt="Tapicerka meblowa 7" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 7</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 7)">
-        <img src="mebl%C3%B3wka%208.jpg" alt="Tapicerka meblowa 8" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 8</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 8)">
-        <img src="mebl%C3%B3wka%209.jpg" alt="Tapicerka meblowa 9" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 9</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 9)">
-        <img src="mebl%C3%B3wka%2010.jpg" alt="Tapicerka meblowa 10" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 10</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 10)">
-        <img src="mebl%C3%B3wka%2011.jpg" alt="Tapicerka meblowa 11" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 11</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 11)">
-        <img src="mebl%C3%B3wka%2012.jpg" alt="Tapicerka meblowa 12" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 12</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 12)">
-        <img src="mebl%C3%B3wka%2013.jpg" alt="Tapicerka meblowa 13" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 13</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 13)">
-        <img src="mebl%C3%B3wka%2014.jpg" alt="Tapicerka meblowa 14" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 14</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 14)">
-        <img src="mebl%C3%B3wka%2015.jpg" alt="Tapicerka meblowa 15" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 15</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 15)">
-        <img src="mebl%C3%B3wka%2016.jpg" alt="Tapicerka meblowa 16" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 16</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 16)">
-        <img src="mebl%C3%B3wka%2017.jpg" alt="Tapicerka meblowa 17" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 17</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 17)">
-        <img src="mebl%C3%B3wka%2018.jpg" alt="Tapicerka meblowa 18" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 18</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 18)">
-        <img src="mebl%C3%B3wka%2019.jpg" alt="Tapicerka meblowa 19" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 19</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 19)">
-        <img src="mebl%C3%B3wka%2020.jpg" alt="Tapicerka meblowa 20" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 20</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 20)">
-        <img src="mebl%C3%B3wka%2021.jpg" alt="Tapicerka meblowa 21" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 21</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 21)">
-        <img src="mebl%C3%B3wka%2022.jpg" alt="Tapicerka meblowa 22" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 22</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 22)">
-        <img src="mebl%C3%B3wka%2023.jpg" alt="Tapicerka meblowa 23" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 23</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryMeble', 23)">
-        <img src="mebl%C3%B3wka%2024.jpg" alt="Tapicerka meblowa 24" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka meblowa 24</div>
-      </div>
+    <p class="section-body">Wybrane realizacje komercyjne — hotele, restauracje, biura i przestrzenie publiczne.</p>
+    <div class="gallery-grid" id="galleryMeble">
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',0)"><img src="mebl%C3%B3wka%201.jpg" alt="Realizacja meblowa 1" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',1)"><img src="mebl%C3%B3wka%202.jpg" alt="Realizacja meblowa 2" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',2)"><img src="mebl%C3%B3wka%203.jpg" alt="Realizacja meblowa 3" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',3)"><img src="mebl%C3%B3wka%204.jpg" alt="Realizacja meblowa 4" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',4)"><img src="mebl%C3%B3wka%205.jpg" alt="Realizacja meblowa 5" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',5)"><img src="mebl%C3%B3wka%206.jpg" alt="Realizacja meblowa 6" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',6)"><img src="mebl%C3%B3wka%207.jpg" alt="Realizacja meblowa 7" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',7)"><img src="mebl%C3%B3wka%208.jpg" alt="Realizacja meblowa 8" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',8)"><img src="mebl%C3%B3wka%209.jpg" alt="Realizacja meblowa 9" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',9)"><img src="mebl%C3%B3wka%2010.jpg" alt="Realizacja meblowa 10" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',10)"><img src="mebl%C3%B3wka%2011.jpg" alt="Realizacja meblowa 11" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',11)"><img src="mebl%C3%B3wka%2012.jpg" alt="Realizacja meblowa 12" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',12)"><img src="mebl%C3%B3wka%2013.jpg" alt="Realizacja meblowa 13" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',13)"><img src="mebl%C3%B3wka%2014.jpg" alt="Realizacja meblowa 14" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',14)"><img src="mebl%C3%B3wka%2015.jpg" alt="Realizacja meblowa 15" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',15)"><img src="mebl%C3%B3wka%2016.jpg" alt="Realizacja meblowa 16" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',16)"><img src="mebl%C3%B3wka%2017.jpg" alt="Realizacja meblowa 17" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',17)"><img src="mebl%C3%B3wka%2018.jpg" alt="Realizacja meblowa 18" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',18)"><img src="mebl%C3%B3wka%2019.jpg" alt="Realizacja meblowa 19" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',19)"><img src="mebl%C3%B3wka%2020.jpg" alt="Realizacja meblowa 20" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',20)"><img src="mebl%C3%B3wka%2021.jpg" alt="Realizacja meblowa 21" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',21)"><img src="mebl%C3%B3wka%2022.jpg" alt="Realizacja meblowa 22" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',22)"><img src="mebl%C3%B3wka%2023.jpg" alt="Realizacja meblowa 23" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryMeble',23)"><img src="mebl%C3%B3wka%2024.jpg" alt="Realizacja meblowa 24" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja meblowa</div></div>
     </div>
   </section>
 
-  <!-- GALERIA — SAMOCHODÓWKA -->
+  <!-- GALERIA SAMOCHODÓWKA -->
   <div class="divider"></div>
-  <section id="galeria-auto" style="position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:80px 40px;">
+  <section id="galeria-auto">
     <p class="section-label">Realizacje</p>
-    <h2 class="section-title">Galeria —<br/><em>tapicerka samochodowa</em></h2>
-    <p class="section-body" style="color:var(--stone);max-width:560px;font-size:1rem;">Tapicerka flot, maszyn roboczych i pojazdów specjalistycznych.</p>
-        <div class="gallery-grid" id="galleryAuto">
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 0)">
-        <img src="samochod%C3%B3wka%200.jpg" alt="Tapicerka samochodowa 0" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 0</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 1)">
-        <img src="samochod%C3%B3wka%201.jpg" alt="Tapicerka samochodowa 1" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 1</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 2)">
-        <img src="samochod%C3%B3wka%202.jpg" alt="Tapicerka samochodowa 2" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 2</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 3)">
-        <img src="samochod%C3%B3wka%203.jpg" alt="Tapicerka samochodowa 3" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 3</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 4)">
-        <img src="samochod%C3%B3wka%204.jpg" alt="Tapicerka samochodowa 4" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 4</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 5)">
-        <img src="samochod%C3%B3wka%205.jpg" alt="Tapicerka samochodowa 5" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 5</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 6)">
-        <img src="samochod%C3%B3wka%206.jpg" alt="Tapicerka samochodowa 6" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 6</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 7)">
-        <img src="samochod%C3%B3wka%207.jpg" alt="Tapicerka samochodowa 7" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 7</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 8)">
-        <img src="samochod%C3%B3wka%208.jpg" alt="Tapicerka samochodowa 8" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 8</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 9)">
-        <img src="samochod%C3%B3wka%209.jpg" alt="Tapicerka samochodowa 9" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 9</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 10)">
-        <img src="samochod%C3%B3wka%2010.jpg" alt="Tapicerka samochodowa 10" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 10</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 11)">
-        <img src="samochod%C3%B3wka%2011.jpg" alt="Tapicerka samochodowa 11" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 11</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 12)">
-        <img src="samochod%C3%B3wka%2012.jpg" alt="Tapicerka samochodowa 12" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 12</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 13)">
-        <img src="samochod%C3%B3wka%2013.jpg" alt="Tapicerka samochodowa 13" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 13</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 14)">
-        <img src="samochod%C3%B3wka%2014.jpg" alt="Tapicerka samochodowa 14" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 14</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 15)">
-        <img src="samochod%C3%B3wka%2015.jpg" alt="Tapicerka samochodowa 15" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 15</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 16)">
-        <img src="samochod%C3%B3wka%2016.jpg" alt="Tapicerka samochodowa 16" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 16</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 17)">
-        <img src="samochod%C3%B3wka%2017.jpg" alt="Tapicerka samochodowa 17" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 17</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 18)">
-        <img src="samochod%C3%B3wka%2018.jpg" alt="Tapicerka samochodowa 18" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 18</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 19)">
-        <img src="samochod%C3%B3wka%2019.jpg" alt="Tapicerka samochodowa 19" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 19</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 20)">
-        <img src="samochod%C3%B3wka%2020.jpg" alt="Tapicerka samochodowa 20" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 20</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 21)">
-        <img src="samochod%C3%B3wka%2021.jpg" alt="Tapicerka samochodowa 21" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 21</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 22)">
-        <img src="samochod%C3%B3wka%2022.jpg" alt="Tapicerka samochodowa 22" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 22</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 23)">
-        <img src="samochod%C3%B3wka%2023.jpg" alt="Tapicerka samochodowa 23" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 23</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 24)">
-        <img src="samochod%C3%B3wka%2024.jpg" alt="Tapicerka samochodowa 24" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 24</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 25)">
-        <img src="samochod%C3%B3wka%2025.jpg" alt="Tapicerka samochodowa 25" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 25</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 26)">
-        <img src="samochod%C3%B3wka%2026.jpg" alt="Tapicerka samochodowa 26" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 26</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 27)">
-        <img src="samochod%C3%B3wka%2027.jpg" alt="Tapicerka samochodowa 27" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 27</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 28)">
-        <img src="samochod%C3%B3wka%2028.jpg" alt="Tapicerka samochodowa 28" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 28</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 29)">
-        <img src="samochod%C3%B3wka%2029.jpg" alt="Tapicerka samochodowa 29" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 29</div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox('galleryAuto', 30)">
-        <img src="samochod%C3%B3wka%2030.jpg" alt="Tapicerka samochodowa 30" onerror="this.parentElement.style.background='#e8e3dc';this.style.display='none'"/>
-        <div class="gallery-caption">Tapicerka samochodowa 30</div>
-      </div>
+    <h2 class="section-title">Galeria —<br/><em>tapicerka pojazdów i maszyn</em></h2>
+    <p class="section-body">Tapicerka seryjna i jednostkowa — pojazdy elektryczne, maszyny robocze, tabor, floty.</p>
+    <div class="gallery-grid" id="galleryAuto">
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',0)"><img src="samochod%C3%B3wka%200.jpg" alt="Realizacja samochodowa 0" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',1)"><img src="samochod%C3%B3wka%201.jpg" alt="Realizacja samochodowa 1" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',2)"><img src="samochod%C3%B3wka%202.jpg" alt="Realizacja samochodowa 2" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',3)"><img src="samochod%C3%B3wka%203.jpg" alt="Realizacja samochodowa 3" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',4)"><img src="samochod%C3%B3wka%204.jpg" alt="Realizacja samochodowa 4" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',5)"><img src="samochod%C3%B3wka%205.jpg" alt="Realizacja samochodowa 5" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',6)"><img src="samochod%C3%B3wka%206.jpg" alt="Realizacja samochodowa 6" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',7)"><img src="samochod%C3%B3wka%207.jpg" alt="Realizacja samochodowa 7" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',8)"><img src="samochod%C3%B3wka%208.jpg" alt="Realizacja samochodowa 8" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',9)"><img src="samochod%C3%B3wka%209.jpg" alt="Realizacja samochodowa 9" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',10)"><img src="samochod%C3%B3wka%2010.jpg" alt="Realizacja samochodowa 10" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',11)"><img src="samochod%C3%B3wka%2011.jpg" alt="Realizacja samochodowa 11" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',12)"><img src="samochod%C3%B3wka%2012.jpg" alt="Realizacja samochodowa 12" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',13)"><img src="samochod%C3%B3wka%2013.jpg" alt="Realizacja samochodowa 13" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',14)"><img src="samochod%C3%B3wka%2014.jpg" alt="Realizacja samochodowa 14" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',15)"><img src="samochod%C3%B3wka%2015.png" alt="Realizacja samochodowa 15" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',16)"><img src="samochod%C3%B3wka%2016.jpg" alt="Realizacja samochodowa 16" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',17)"><img src="samochod%C3%B3wka%2017.jpg" alt="Realizacja samochodowa 17" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',18)"><img src="samochod%C3%B3wka%2018.jpg" alt="Realizacja samochodowa 18" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',19)"><img src="samochod%C3%B3wka%2019.jpg" alt="Realizacja samochodowa 19" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',20)"><img src="samochod%C3%B3wka%2020.jpg" alt="Realizacja samochodowa 20" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',21)"><img src="samochod%C3%B3wka%2021.jpg" alt="Realizacja samochodowa 21" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',22)"><img src="samochod%C3%B3wka%2022.jpg" alt="Realizacja samochodowa 22" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',23)"><img src="samochod%C3%B3wka%2023.jpg" alt="Realizacja samochodowa 23" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',24)"><img src="samochod%C3%B3wka%2024.jpg" alt="Realizacja samochodowa 24" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',25)"><img src="samochod%C3%B3wka%2025.jpg" alt="Realizacja samochodowa 25" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',26)"><img src="samochod%C3%B3wka%2026.jpg" alt="Realizacja samochodowa 26" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',27)"><img src="samochod%C3%B3wka%2027.jpg" alt="Realizacja samochodowa 27" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',28)"><img src="samochod%C3%B3wka%2028.jpg" alt="Realizacja samochodowa 28" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
+      <div class="gallery-item" onclick="openLightbox('galleryAuto',29)"><img src="samochod%C3%B3wka%2029.jpg" alt="Realizacja samochodowa 29" onerror="this.parentElement.style.background='#ddd8d0';this.style.display='none'"/><div class="gallery-caption">Realizacja samochodowa</div></div>
     </div>
   </section>
 
-  <!-- BUDYNEK -->
-  <div style="position:relative;z-index:1;width:1px;height:32px;background:var(--sand);margin:0 auto;"></div>
+  <!-- BANNER -->
+  <div class="divider-sm"></div>
   <div class="building-banner">
-    <img src="Budynek.png" alt="Warsztat Tapicerek — Gumniska 21B, Dębica" onerror="this.style.display='none';this.parentElement.style.background='var(--charcoal)';this.parentElement.style.minHeight='300px'"/>
     <div class="building-overlay">
-      <h2>Profesjonalny warsztat<br/><em>w sercu Dębicy</em></h2>
+      <h2>Profesjonalny warsztat<br/><em>w Twoim zasięgu</em></h2>
       <p>Gumniska 21B, 39-200 Dębica &nbsp;·&nbsp; Pon–Pt 8:00–16:00</p>
     </div>
   </div>
 
-  <!-- LOKALIZACJA -->
-  <div style="position:relative;z-index:1;width:1px;height:32px;background:var(--sand);margin:0 auto;"></div>
-  <section id="lokalizacja" style="position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:48px 40px 80px;">
-    <p class="section-label">Znajdź nas</p>
-    <h2 class="section-title">Nasza<br/><em>lokalizacja</em></h2>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;margin-bottom:32px;border:1px solid var(--sand);">
-      <div style="background:var(--warm-white);padding:24px 20px;border-right:1px solid var(--sand);">
-        <div style="font-size:1.2rem;margin-bottom:8px;">📍</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Adres</div>
-        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;">Gumniska 21B<br/>39-200 Dębica</div>
+  <!-- KONTAKT -->
+  <div class="divider-sm"></div>
+  <section id="kontakt">
+    <p class="section-label">Skontaktuj się</p>
+    <h2 class="section-title">Porozmawiajmy<br/>o <em>Waszym zleceniu</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Wyślij zapytanie ofertowe z opisem zakresu prac, wolumenu i wymaganego terminu. Odpowiemy w ciągu 24 godzin roboczych i przygotujemy indywidualną wycenę.</p>
+        <div class="contact-detail">
+          <a href="mailto:tapicerek.debica@gmail.com">tapicerek.debica@gmail.com</a>
+          <a href="tel:+48606109776">606 109 776</a>
+        </div>
       </div>
-      <div style="background:var(--warm-white);padding:24px 20px;border-right:1px solid var(--sand);">
-        <div style="font-size:1.2rem;margin-bottom:8px;">🕐</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Godziny otwarcia</div>
-        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;">Pon – Pt: 8:00 – 16:00<br/>Sobota – Niedziela: zamknięte</div>
+      <div class="form-group">
+        <input type="text" placeholder="Firma i osoba kontaktowa"/>
+        <input type="email" placeholder="Adres e-mail"/>
+        <select>
+          <option value="" disabled selected>Rodzaj zlecenia</option>
+          <option>Produkcja seryjna siedzeń</option>
+          <option>Tapicerka taboru / floty</option>
+          <option>Aranżacja hotelowa / gastronomiczna</option>
+          <option>Kontrakt deweloperski</option>
+          <option>Elementy specjalistyczne</option>
+          <option>Umowa serwisowa</option>
+          <option>Inne</option>
+        </select>
+        <textarea placeholder="Opisz zlecenie — rodzaj elementów, szacowany wolumen, termin…"></textarea>
+        <label class="file-upload-label" for="fileUploadBiz">
+          <span class="upload-icon">📎</span>
+          <span class="upload-text">Dodaj dokumentację lub zdjęcia</span>
+          <span class="upload-hint">JPG, PNG, PDF, DWG — możesz dodać kilka plików</span>
+        </label>
+        <input type="file" id="fileUploadBiz" multiple accept="image/*,.pdf" onchange="showFileNames(this)"/>
+        <div class="file-names" id="fileNamesBiz"></div>
+        <button class="form-submit">Wyślij zapytanie ofertowe</button>
       </div>
-      <div style="background:var(--warm-white);padding:24px 20px;border-right:1px solid var(--sand);">
-        <div style="font-size:1.2rem;margin-bottom:8px;">⭐</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Opinie Google</div>
-        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;margin-bottom:10px;">Zobacz aktualne oceny<br/>i opinie naszych klientów</div>
-        <a href="https://www.google.com/maps/search/Tapicerek+Jolanta+Kwolek-Sokół+Dębica" target="_blank" style="display:inline-block;padding:6px 14px;border:1px solid var(--accent);color:var(--accent);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--accent)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Sprawdź w Google</a>
-      </div>
-      <div style="background:var(--warm-white);padding:24px 20px;">
-        <div style="font-size:1.2rem;margin-bottom:8px;">👍</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;margin-bottom:4px;">Facebook</div>
-        <div style="font-size:0.82rem;color:var(--stone);line-height:1.6;margin-bottom:10px;">Śledź nas na Facebooku,<br/>oglądaj realizacje i aktualności</div>
-        <a href="https://www.facebook.com" target="_blank" style="display:inline-block;padding:6px 14px;border:1px solid var(--accent);color:var(--accent);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--accent)';this.style.color='white'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">Odwiedź profil</a>
-      </div>
-    </div>
-
-    <div style="width:100%;height:420px;border:1px solid var(--sand);overflow:hidden;">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2550.2!2d21.4130!3d50.0520!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473cf0b5c5c5c5c5%3A0x1!2sGumniska+21B%2C+39-200+D%C4%99bica!5e0!3m2!1spl!2spl!4v1"
-        width="100%" height="420" style="border:0;display:block;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Tapicerek Dębica — Gumniska 21B">
-      </iframe>
-    </div>
-    <div style="margin-top:12px;text-align:right;">
-      <a href="https://www.google.com/maps/search/Tapicerek+Jolanta+Kwolek-Sokół+Gumniska+21B+Dębica" target="_blank" style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--stone);text-decoration:none;border-bottom:1px solid var(--sand);padding-bottom:2px;transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--stone)'">Otwórz w Google Maps →</a>
     </div>
   </section>
 
-  <footer style="position:relative;z-index:1;text-align:center;padding:40px 24px;border-top:1px solid var(--sand);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--stone);">
+  <!-- LOKALIZACJA -->
+  <div class="divider-sm"></div>
+  <section id="lokalizacja" style="padding-top:48px;padding-bottom:80px;">
+    <p class="section-label">Znajdź nas</p>
+    <h2 class="section-title">Nasza<br/><em>lokalizacja</em></h2>
+    <div class="info-bar">
+      <div class="info-cell">
+        <div class="info-cell-icon">📍</div>
+        <div class="info-cell-title">Adres</div>
+        <div class="info-cell-body">Gumniska 21B<br/>39-200 Dębica</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-icon">🕐</div>
+        <div class="info-cell-title">Godziny otwarcia</div>
+        <div class="info-cell-body">Pon – Pt: 8:00 – 16:00<br/>Sobota – Niedziela: zamknięte</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-icon">⭐</div>
+        <div class="info-cell-title">Opinie Google</div>
+        <div class="info-cell-body">Zobacz oceny i opinie naszych klientów</div>
+        <a class="info-btn" href="https://www.google.com/maps/search/Tapicerek+Jolanta+Kwolek-Sokół+Dębica" target="_blank">Sprawdź w Google</a>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-icon">👍</div>
+        <div class="info-cell-title">Facebook</div>
+        <div class="info-cell-body">Śledź nas, oglądaj realizacje i aktualności</div>
+        <a class="info-btn" href="https://www.facebook.com" target="_blank">Facebook</a>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2550.2!2d21.4130!3d50.0520!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473cf0b5c5c5c5c5%3A0x1!2sGumniska+21B%2C+39-200+D%C4%99bica!5e0!3m2!1spl!2spl!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Tapicerek Dębica — Gumniska 21B">
+      </iframe>
+    </div>
+    <div class="map-link">
+      <a href="https://www.google.com/maps/search/Tapicerek+Jolanta+Kwolek-Sokół+Gumniska+21B+Dębica" target="_blank">Otwórz w Google Maps →</a>
+    </div>
+  </section>
+
+  <footer>
     © 2025 Tapicerek — Gumniska 21B, 39-200 Dębica &nbsp;·&nbsp; Pon–Pt 8:00–16:00
   </footer>
 
@@ -518,43 +528,27 @@
 
   <script>
     function showFileNames(input) {
-      const siblingId = input.id === 'fileUploadBiz' ? 'fileNamesBiz' : 'fileNames';
-      const names = Array.from(input.files).map(f => f.name).join(', ');
-      document.getElementById(siblingId).textContent = names || '';
+      const id = input.id === 'fileUploadBiz' ? 'fileNamesBiz' : 'fileNames';
+      document.getElementById(id).textContent = Array.from(input.files).map(f => f.name).join(', ') || '';
     }
-
-    let currentGallery = [];
-    let currentIndex = 0;
-
+    let currentGallery = [], currentIndex = 0;
     function openLightbox(galleryId, index) {
-      const gallery = document.getElementById(galleryId);
-      const imgs = Array.from(gallery.querySelectorAll('img')).filter(i => i.complete && i.naturalWidth > 0);
+      const imgs = Array.from(document.getElementById(galleryId).querySelectorAll('img')).filter(i => i.complete && i.naturalWidth > 0);
       if (!imgs.length) return;
-      currentGallery = imgs;
-      currentIndex = index;
-      showLightboxImage();
+      currentGallery = imgs; currentIndex = index;
+      document.getElementById('lightboxImg').src = currentGallery[currentIndex].src;
       document.getElementById('lightbox').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
-
-    function showLightboxImage() {
-      document.getElementById('lightboxImg').src = currentGallery[currentIndex].src;
-    }
-
     function changeLightbox(dir) {
       currentIndex = (currentIndex + dir + currentGallery.length) % currentGallery.length;
-      showLightboxImage();
+      document.getElementById('lightboxImg').src = currentGallery[currentIndex].src;
     }
-
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('active');
       document.body.style.overflow = '';
     }
-
-    function closeLightboxOutside(e) {
-      if (e.target === document.getElementById('lightbox')) closeLightbox();
-    }
-
+    function closeLightboxOutside(e) { if (e.target === document.getElementById('lightbox')) closeLightbox(); }
     document.addEventListener('keydown', e => {
       if (!document.getElementById('lightbox').classList.contains('active')) return;
       if (e.key === 'ArrowRight') changeLightbox(1);
