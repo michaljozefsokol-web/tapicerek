@@ -172,7 +172,7 @@
   <!-- KPI -->
   <section id="o-nas">
     <p class="section-label">Tapicerek w liczbach</p>
-    <h2 class="section-title">30 lat doświadczenia<br/>i <em>mierzalne rezultaty</em></h2>
+    <h2 class="section-title">30+ lat doświadczenia<br/>i <em>mierzalne rezultaty</em></h2>
     <p class="section-body">Nie jesteśmy małą pracownią. Jesteśmy sprawdzonym partnerem produkcyjnym z własnym zespołem, zapleczem technicznym i wieloletnimi umowami z wiodącymi firmami w Polsce.</p>
     <div class="kpi-grid">
       <div class="kpi-card">
@@ -189,26 +189,6 @@
         <div class="kpi-icon">👷</div>
         <div class="kpi-value">9</div>
         <div class="kpi-label">Doświadczonych tapicerów i krawcowych w naszym zespole</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon">🏭</div>
-        <div class="kpi-value">30+</div>
-        <div class="kpi-label">Aktywnych partnerów biznesowych w Polsce</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon">💺</div>
-        <div class="kpi-value">1 000+</div>
-        <div class="kpi-label">Obsługiwanych klientów rocznie</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon">📊</div>
-        <div class="kpi-value">5 000+</div>
-        <div class="kpi-label">Realizowanych zleceń rocznie</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon">🧵</div>
-        <div class="kpi-value">12 000+ mb</div>
-        <div class="kpi-label">Materiałów tapicerskich zużywanych rocznie</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-icon">🚚</div>
@@ -314,7 +294,7 @@
         </div>
 
         <div class="case-label">Współpraca długoterminowa</div>
-        <div class="case-name">Grupa Azoty Koltar —<br/><em>producent taboru kolejowego</em></div>
+        <div class="case-name">Grupa Azoty Koltar —<br/><em>towarowy przewoźnik kolejowy</em></div>
         <p class="case-body">Współpracujemy z firmą Koltar z Grupy Azoty przy tapicerowaniu elementów taboru kolejowego i komunikacji zbiorowej. Realizujemy zlecenia na siedziska pasażerskie, panele i inne elementy wykończenia wnętrz wagonów i pojazdów szynowych. Terminowe dostawy i zachowane normy branżowe.</p>
         <div class="case-stats">
           <div>
@@ -476,9 +456,10 @@
           <a href="tel:+48606109776">606 109 776</a>
         </div>
       </div>
-      <div class="form-group">
-        <input type="text" placeholder="Firma i osoba kontaktowa"/>
-        <input type="email" placeholder="Adres e-mail"/>
+      <form class="form-group" action="https://formspree.io/f/maqpeeno" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="Zapytanie ofertowe — Tapicerek"/>
+        <input type="text" name="firma_kontakt" placeholder="Firma i osoba kontaktowa"/>
+        <input type="email" name="_replyto" placeholder="Adres e-mail"/>
         <select>
           <option value="" disabled selected>Rodzaj zlecenia</option>
           <option>Produkcja seryjna siedzeń</option>
@@ -489,16 +470,16 @@
           <option>Umowa serwisowa</option>
           <option>Inne</option>
         </select>
-        <textarea placeholder="Opisz zlecenie — rodzaj elementów, szacowany wolumen, termin…"></textarea>
+        <textarea name="wiadomosc" placeholder="Opisz zlecenie — rodzaj elementów, szacowany wolumen, termin…"></textarea>
         <label class="file-upload-label" for="fileUploadBiz">
           <span class="upload-icon">📎</span>
           <span class="upload-text">Dodaj dokumentację lub zdjęcia</span>
           <span class="upload-hint">JPG, PNG, PDF, DWG — możesz dodać kilka plików</span>
         </label>
-        <input type="file" id="fileUploadBiz" multiple accept="image/*,.pdf" onchange="showFileNames(this)"/>
+        <input type="file" id="fileUploadBiz" name="zdjecia" multiple accept="image/*,.pdf" onchange="showFileNames(this)"/>
         <div class="file-names" id="fileNamesBiz"></div>
-        <button class="form-submit">Wyślij zapytanie ofertowe</button>
-      </div>
+        <button type="submit" class="form-submit">Wyślij zapytanie ofertowe</button>
+      </form>
     </div>
   </section>
   <!-- LOKALIZACJA -->
